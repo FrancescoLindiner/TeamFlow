@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="499.0" prefWidth="815.0" styleClass="styleModuloLogin" stylesheets="@../css/styleModuloLogin.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.tf.teamflowcode.GestioneAccount.Interface.ModuloLogin">
+   <center>
+      <AnchorPane id="AnchorPane" accessibleRole="CHECK_BOX" cache="true" cacheHint="SPEED" depthTest="ENABLE" prefHeight="453.0" prefWidth="490.0" stylesheets="@../css/styleModuloLogin.css" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="343.0" fitWidth="467.0" layoutX="65.0" layoutY="95.0">
+               <image>
+                  <Image url="@../../sfondo.png" />
+               </image>
+            </ImageView>
+            <TextField id="textFieldHidden" fx:id="passwordText" layoutX="131.0" layoutY="268.0" prefHeight="41.0" prefWidth="335.0" />
+            <PasswordField id="password" fx:id="password" layoutX="131.0" layoutY="268.0" prefHeight="41.0" prefWidth="335.0" promptText="Password" />
+            <Label id="Login" layoutX="-12.0" text="Login" />
+            <ImageView fitHeight="83.0" fitWidth="81.0" layoutX="256.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/Icona%20Utente.png" />
+               </image>
+            </ImageView>
+            <TextField id="email" fx:id="username" layoutX="131.0" layoutY="214.0" prefHeight="41.0" prefWidth="335.0" promptText="Email" />
+            <Button id="login" layoutX="245.0" layoutY="326.0" mnemonicParsing="false" onAction="#login" prefHeight="38.0" prefWidth="108.0" stylesheets="@../css/styleModuloLogin.css" text="LOGIN">
+               <effect>
+                  <DropShadow />
+               </effect></Button>
+            <Button id="recuperaPassword" layoutX="185.0" layoutY="390.0" mnemonicParsing="false" onAction="#recuperaPassword" stylesheets="@../css/styleModuloLogin.css" text="Hai dimenticato la password?" textFill="#796f6f" />
+            <ImageView fitHeight="31.0" fitWidth="34.0" layoutX="98.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/IconaUtenteTextField.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="31.0" fitWidth="34.0" layoutX="99.0" layoutY="273.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/IconaPassword.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="37.0" fitWidth="27.0" layoutX="434.0" layoutY="274.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/showPasswordIcon.png" />
+               </image>
+            </ImageView>
+            <CheckBox id="checkBox" fx:id="checkBox" layoutX="439.0" layoutY="280.0" mnemonicParsing="false" onAction="#showPassword" opacity="0.0" stylesheets="@../css/styleModuloLogin.css" />
+         </children>
+      </AnchorPane>
+   </center>
+   <left>
+      <AnchorPane prefHeight="536.0" prefWidth="196.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label id="TeamFlow" layoutX="61.0" layoutY="28.0" text="TeamFlow" />
+            <ImageView fitHeight="565.0" fitWidth="31.0" layoutX="173.0" layoutY="-29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../sbarra.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="40.0" fitWidth="52.0" layoutX="9.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </left>
+</BorderPane>

@@ -1,0 +1,13 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "TeamFlow/lib/javafx.base.jar",
+        "TeamFlow/lib/javafx.controls.jar",
+        "TeamFlow/lib/javafx.fxml.jar",
+        "TeamFlow/lib/javafx.graphics.jar",
+        "TeamFlow/lib/javafx.media.jar",
+        "TeamFlow/lib/javafx.swing.jar",
+        "TeamFlow/lib/javafx.web.jar",
+        "TeamFlow/lib/javafx-swt.jar"
+    ]
+}

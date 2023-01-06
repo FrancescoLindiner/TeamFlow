@@ -1,0 +1,9 @@
+.root {
+    -fx-background-color: white;
+}
+
+#confermaButton {
+    -fx-background-color: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 15;
+}

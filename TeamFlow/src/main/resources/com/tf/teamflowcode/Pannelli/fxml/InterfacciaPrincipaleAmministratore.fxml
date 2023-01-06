@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="499.0" prefWidth="815.0" styleClass="styleModuloLogin" stylesheets="@../css/styleInterfacciaPrincipale.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.tf.teamflowcode.Pannelli.Interface.InterfacciaPrincipaleAmministratore">
+   <center>
+      <AnchorPane id="AnchorPane" accessibleRole="CHECK_BOX" cache="true" cacheHint="SPEED" depthTest="ENABLE" prefHeight="453.0" prefWidth="490.0" stylesheets="@../css/styleInterfacciaPrincipale.css" BorderPane.alignment="CENTER">
+         <children>
+            <Label id="dashboard" layoutX="-12.0" text="Dashboard" />
+            <ImageView layoutX="489.0" layoutY="-28.0" rotate="90.0">
+               <image>
+                  <Image url="@../img/sfondo.png" />
+               </image>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </ImageView>
+            <Label id="nomeUtente" fx:id="nomeUtente" layoutX="490.0" layoutY="36.0" text="[Nome utente]" />
+            <ImageView fitHeight="36.0" fitWidth="34.0" layoutX="456.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/Picture1.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="454.0" layoutX="54.0" layoutY="127.0">
+               <image>
+                  <Image url="@../../sfondo.png" />
+               </image>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </ImageView>
+            <Label id="label1" fx:id="label1" layoutX="83.0" layoutY="146.0" stylesheets="@../css/styleInterfacciaPrincipale.css" text="Turno [data]" />
+            <Label id="label2" layoutX="83.0" layoutY="187.0" stylesheets="@../css/styleInterfacciaPrincipale.css" text="Ciao [Nome Utente]," />
+            <Label layoutX="83.0" layoutY="203.0" text="oggi il tuo turno comincia alle [orario]" />
+            <Label layoutX="84.0" layoutY="221.0" text="e termina alle [orario]" />
+            <ImageView fitHeight="99.0" fitWidth="102.0" layoutX="380.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/clock.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="101.0" fitWidth="451.0" layoutX="56.0" layoutY="335.0">
+               <image>
+                  <Image url="@../../sfondo.png" />
+               </image>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </ImageView>
+            <Label layoutX="83.0" layoutY="348.0" text="Report Stipendi" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="299.0" layoutY="349.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/istogramma.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="111.0" layoutY="375.0" prefHeight="20.0" prefWidth="39.0" text="0,0 €" />
+            <Label fx:id="labelData" layoutX="93.0" layoutY="403.0" prefHeight="19.0" prefWidth="74.0" />
+         </children>
+      </AnchorPane>
+   </center>
+   <left>
+      <AnchorPane prefHeight="536.0" prefWidth="196.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label id="TeamFlow" layoutX="61.0" layoutY="28.0" text="TeamFlow" />
+            <ImageView fitHeight="565.0" fitWidth="31.0" layoutX="173.0" layoutY="-29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../sbarra.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="40.0" fitWidth="52.0" layoutX="9.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../logo.png" />
+               </image>
+            </ImageView>
+            <Button id="turni" layoutX="37.0" layoutY="186.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="89.0" stylesheets="@../css/styleInterfacciaPrincipale.css" text="       Turni" />
+            <MenuButton id="firma" layoutX="26.0" layoutY="121.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="128.0" stylesheets="@../css/styleInterfacciaPrincipale.css" text="          Firma">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Firma Ingresso" />
+                <MenuItem mnemonicParsing="false" text="Firma Uscita" />
+                  <MenuItem mnemonicParsing="false" text="Firma Remoto" />
+                  <MenuItem mnemonicParsing="false" text="Comunica assenza" />
+              </items>
+            </MenuButton>
+            <ImageView fitHeight="105.0" fitWidth="44.0" layoutX="42.0" layoutY="433.0" rotate="90.0">
+               <image>
+                  <Image url="@../img/sfondo.png" />
+               </image>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </ImageView>
+            <Button id="impostazioni" fx:id="buttonImpostazioni" layoutX="128.0" layoutY="472.0" mnemonicParsing="false" onAction="#buttonImpostazioni" prefHeight="26.0" prefWidth="38.0" stylesheets="@../css/styleInterfacciaPrincipale.css" />
+            <Button id="logout" layoutX="46.0" layoutY="469.0" mnemonicParsing="false" onAction="#buttonLogout" stylesheets="@../css/styleInterfacciaPrincipale.css" text="Logout" />
+            <ImageView fitHeight="42.0" fitWidth="37.0" layoutX="17.0" layoutY="467.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/logout.png" />
+               </image>
+            </ImageView>
+            <Button id="stipendi" layoutX="29.0" layoutY="254.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="122.0" stylesheets="@../css/styleInterfacciaPrincipale.css" text="      Stipendi" />
+            <Button id="gestioneImpiegati" layoutX="2.0" layoutY="317.0" mnemonicParsing="false" onAction="#apriGestioneImpiegati" prefHeight="51.0" prefWidth="191.0" stylesheets="@../css/styleInterfacciaPrincipale.css" text="   Gestione Impiegati" />
+         </children>
+      </AnchorPane>
+   </left>
+</BorderPane>

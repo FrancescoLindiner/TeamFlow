@@ -1,0 +1,79 @@
+.root {
+    -fx-background-color: white;
+}
+
+#turni {
+    -fx-background-image: url("../img/Picture2.png");
+    -fx-background-size: 35 35;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: left;
+    -fx-background-color: Transparent;
+    -fx-font-weight: bold;
+    -fx-font-size: 15;
+
+}
+
+#firma {
+    -fx-background-image: url("../img/Picture3.png");
+    -fx-background-size: 35 35;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: left;
+    -fx-background-color: Transparent;
+    -fx-font-weight: bold;
+    -fx-font-size: 20;
+}
+
+#stipendi {
+    -fx-background-image: url("../img/Picture4.png");
+    -fx-background-size: 35 35;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: left;
+    -fx-background-color: Transparent;
+    -fx-font-weight: bold;
+    -fx-font-size: 15;
+}
+
+#gestioneImpiegati {
+    -fx-background-image: url("../img/Picture1.png");
+    -fx-background-size: 35 35;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: left;
+    -fx-background-color: Transparent;
+    -fx-font-weight: bold;
+    -fx-font-size: 14;
+}
+
+#logout {
+    -fx-background-color: Transparent;
+    -fx-font-weight: bold;
+    -fx-font-size: 15;
+}
+
+#recuperaPassword {
+    -fx-background-color: Transparent;
+    -fx-font-weight: bold;
+    -fx-font-size: 10;
+}
+
+#impostazioni {
+    -fx-background-image: url("../img/Picture5.png");
+    -fx-background-size: 35 35;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: left;
+    -fx-background-color: Transparent;
+}
+
+.label {
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+}
+
+#TeamFlow {
+    -fx-font-weight: bold;
+    -fx-font-size: 20;
+}
+
+#dashboard {
+    -fx-font-weight: bold;
+    -fx-font-size: 30;
+}
