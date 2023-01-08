@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="810.0" stylesheets="@../css/styleTableTurni.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.tf.teamflowcode.GestioneOrariEStipendi.Interface.TurniInterface">
+   <children>
+      <ImageView fitHeight="500.0" fitWidth="810.0">
+         <image>
+            <Image url="@../../Pannelli/img/SfondoBlur.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="329.0" fitWidth="539.0" layoutX="223.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../sfondo.png" />
+         </image>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="61.0" layoutX="223.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Pannelli/img/Picture2.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="273.0" layoutY="123.0" text="Turni">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <TableView id="table" fx:id="tableView" layoutX="305.0" layoutY="192.0" prefHeight="200.0" prefWidth="375.0" stylesheets="@../css/styleTableTurni.css">
+        <columns>
+          <TableColumn id="tableRow" prefWidth="75.0" text="LUN" />
+          <TableColumn prefWidth="75.0" text="MAR" />
+            <TableColumn prefWidth="75.0" text="MER" />
+            <TableColumn prefWidth="75.0" text="GIO" />
+            <TableColumn prefWidth="75.0" text="VEN" />
+        </columns>
+      </TableView>
+      <ImageView fitHeight="92.0" fitWidth="98.0" layoutX="-15.0" layoutY="-19.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Pannelli/img/tastoIndietro.png" />
+         </image>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
+      <Button layoutX="6.0" layoutY="2.0" mnemonicParsing="false" onAction="#buttonVaiIndietro" opacity="0.0" prefHeight="50.0" prefWidth="50.0" text="Button" />
+   </children>
+</Pane>

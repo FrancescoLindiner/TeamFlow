@@ -33,7 +33,7 @@
                <effect>
                   <DropShadow />
                </effect></Button>
-            <Button id="recuperaPassword" layoutX="185.0" layoutY="390.0" mnemonicParsing="false" onAction="#recuperaPassword" stylesheets="@../css/styleModuloLogin.css" text="Hai dimenticato la password?" textFill="#796f6f" />
+            <Button id="recuperaPassword" layoutX="217.0" layoutY="391.0" mnemonicParsing="false" onAction="#recuperaPassword" stylesheets="@../css/styleModuloLogin.css" text="Recupera Password" textFill="#796f6f" />
             <ImageView fitHeight="31.0" fitWidth="34.0" layoutX="98.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/IconaUtenteTextField.png" />

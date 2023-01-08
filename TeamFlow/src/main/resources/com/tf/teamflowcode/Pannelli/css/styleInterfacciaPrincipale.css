@@ -9,7 +9,7 @@
     -fx-background-position: left;
     -fx-background-color: Transparent;
     -fx-font-weight: bold;
-    -fx-font-size: 15;
+    -fx-font-size: 20;
 
 }
 
@@ -30,7 +30,7 @@
     -fx-background-position: left;
     -fx-background-color: Transparent;
     -fx-font-weight: bold;
-    -fx-font-size: 15;
+    -fx-font-size: 18;
 }
 
 #gestioneImpiegati {
@@ -76,4 +76,22 @@
 #dashboard {
     -fx-font-weight: bold;
     -fx-font-size: 30;
+}
+
+#RichiediPermesso {
+    -fx-background-color: Transparent;
+    -fx-font-weight: bold;
+    -fx-font-size: 13.5;
+}
+
+#ComunicaAssenza {
+    -fx-background-color: Transparent;
+    -fx-font-weight: bold;
+    -fx-font-size: 13.5;
+}
+
+#FirmaRemoto {
+    -fx-background-color: Transparent;
+    -fx-font-weight: bold;
+    -fx-font-size: 14;
 }

@@ -32,7 +32,7 @@
       <TextField id="textField1" layoutX="338.0" layoutY="186.0" prefHeight="50.0" prefWidth="309.0" promptText="Nome" />
       <TextField id="textField2" layoutX="338.0" layoutY="244.0" prefHeight="50.0" prefWidth="309.0" promptText="Cognome" />
       <TextField id="textField3" layoutX="338.0" layoutY="302.0" prefHeight="50.0" prefWidth="309.0" promptText="Matricola" />
-      <Button id="buttonCerca" layoutX="463.0" layoutY="362.0" mnemonicParsing="false" text="Cerca" />
+      <Button id="buttonCerca" layoutX="463.0" layoutY="362.0" mnemonicParsing="false" onAction="#buttonCerca" text="Cerca" />
       <Button id="buttonAggiungiImpiegati" fx:id="buttonAggiungiImpiegato" layoutX="414.0" layoutY="404.0" mnemonicParsing="false" onAction="#buttonAggiungiImpiegati" text="Aggiungi Impiegati" />
       <ImageView fitHeight="92.0" fitWidth="98.0" layoutX="-15.0" layoutY="-19.0" pickOnBounds="true" preserveRatio="true">
          <image>

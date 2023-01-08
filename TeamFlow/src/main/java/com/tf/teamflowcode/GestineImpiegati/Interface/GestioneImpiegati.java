@@ -43,6 +43,18 @@ public class GestioneImpiegati {
         stage.setResizable(false);
         stage.setTitle("Aggiungi Impiegato");
         stage.show();
-        
+    }
+
+    @FXML
+    void buttonCerca(ActionEvent event) throws IOException {
+        Parent splashScreen = FXMLLoader.load(getClass()
+                .getResource(
+                        "../../../../../../resources/com/tf/teamflowcode/GestioneImpiegati/fxml/RicercaImpiegati.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(splashScreen, 810, 500);
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.setTitle("Risultati Ricerca");
+        stage.show();
     }
 }

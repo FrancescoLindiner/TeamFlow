@@ -31,9 +31,6 @@ public class InterfacciaPrincipaleAmministratore implements Initializable {
     private Label label1;
 
     @FXML
-    private Label labelData;
-
-    @FXML
     private Label nomeUtente;
 
     public void setData() {
@@ -43,7 +40,6 @@ public class InterfacciaPrincipaleAmministratore implements Initializable {
 
         String currentDate = Date.format(cals.getTime());
 
-        labelData.setText(currentDate);
         label1.setText("Turno del " + currentDate);
     }
 
@@ -89,11 +85,60 @@ public class InterfacciaPrincipaleAmministratore implements Initializable {
 
     }
 
-    // Parent parent2 =
-    // FXMLLoader.load(getClass().getResource("../../../../../../resources/com/tf/teamflowcode/GestioneAccount/fxml/fxmlLogin.fxml"));
+    @FXML
+    void buttonTurni(ActionEvent event) throws IOException {
+        parent = FXMLLoader.load(getClass()
+                .getResource(
+                        "../../../../../../resources/com/tf/teamflowcode/GestioneOrariEStipendi/fxml/Turni.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(parent, 810, 500);
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.setTitle("Turni");
+        stage.show();
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setData();
+    }
+
+    @FXML
+    void mostraStipendi(ActionEvent event) throws IOException {
+        parent = FXMLLoader.load(getClass()
+                .getResource(
+                        "../../../../../../resources/com/tf/teamflowcode/GestioneOrariEStipendi/fxml/Stipendi.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(parent, 810, 500);
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.setTitle("Stipendi");
+        stage.show();
+    }
+
+    @FXML
+    void buttonRichiediPermesso(ActionEvent event) throws IOException {
+        parent = FXMLLoader.load(getClass()
+                .getResource(
+                        "../../../../../../resources/com/tf/teamflowcode/GestionePresenze/fxml/RichiediPermesso.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(parent, 810, 500);
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.setTitle("Stipendi");
+        stage.show();
+    }
+
+    @FXML
+    void buttonFirma(ActionEvent event) throws IOException {
+        parent = FXMLLoader.load(getClass()
+                .getResource(
+                        "../../../../../../resources/com/tf/teamflowcode/GestionePresenze/fxml/InterfacciaFirma.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(parent, 810, 500);
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.setTitle("Firma");
+        stage.show();
     }
 }
