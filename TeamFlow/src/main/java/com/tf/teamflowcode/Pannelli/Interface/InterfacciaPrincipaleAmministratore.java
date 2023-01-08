@@ -141,4 +141,31 @@ public class InterfacciaPrincipaleAmministratore implements Initializable {
         stage.setTitle("Firma");
         stage.show();
     }
+
+    @FXML
+    void buttonFirmaRemoto(ActionEvent event) throws IOException {
+        parent = FXMLLoader.load(getClass()
+                .getResource(
+                        "../../../../../../resources/com/tf/teamflowcode/GestionePresenze/fxml/FirmaDaRemoto.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(parent, 810, 500);
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.setTitle("Firma Da Remoto");
+        stage.show();
+    }
+
+    @FXML
+    void buttonComunicaAssenza(ActionEvent event) throws IOException {
+        parent = FXMLLoader.load(getClass()
+                .getResource(
+                        "../../../../../../resources/com/tf/teamflowcode/GestionePresenze/fxml/ComunicaAssenza.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(parent, 810, 500);
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.setTitle("Comunica Assenza");
+        stage.show();
+    }
+
 }

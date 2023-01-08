@@ -70,8 +70,8 @@
                </image>
             </ImageView>
             <Button id="RichiediPermesso" layoutX="30.0" layoutY="376.0" mnemonicParsing="false" onAction="#buttonRichiediPermesso" text="RICHIEDI PERMESSO" />
-            <Button id="FirmaRemoto" layoutX="205.0" layoutY="375.0" mnemonicParsing="false" text="FIRMA DA REMOTO" />
-            <Button id="ComunicaAssenza" layoutX="390.0" layoutY="375.0" mnemonicParsing="false" text="COMUNICA ASSENZA" />
+            <Button id="FirmaRemoto" layoutX="205.0" layoutY="375.0" mnemonicParsing="false" onAction="#buttonFirmaRemoto" text="FIRMA DA REMOTO" />
+            <Button id="ComunicaAssenza" layoutX="390.0" layoutY="375.0" mnemonicParsing="false" onAction="#buttonComunicaAssenza" text="COMUNICA ASSENZA" />
          </children>
       </AnchorPane>
    </center>

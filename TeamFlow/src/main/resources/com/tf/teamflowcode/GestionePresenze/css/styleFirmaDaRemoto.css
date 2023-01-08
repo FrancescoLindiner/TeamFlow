@@ -1,0 +1,13 @@
+#textArea {
+    -fx-background-radius: 8px;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 8px;
+    -fx-border-color: #000000;
+}
+
+#buttonConferma {
+    -fx-font-weight: bold;
+    -fx-font-size: 15;
+    -fx-background-color: white;
+    -fx-background-radius: 5px;
+}
