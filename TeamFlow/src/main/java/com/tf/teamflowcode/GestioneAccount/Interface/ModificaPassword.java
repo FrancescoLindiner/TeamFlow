@@ -1,6 +1,8 @@
 package main.java.com.tf.teamflowcode.GestioneAccount.Interface;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +13,8 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import main.java.com.tf.teamflowcode.GestioneAccount.Control.AccountControl;
+import main.java.com.tf.teamflowcode.GestioneAccount.Control.GestorePassword;
 import javafx.scene.Node;
 
 public class ModificaPassword {
@@ -46,17 +50,31 @@ public class ModificaPassword {
     @FXML
     private TextField passwordText3;
 
+    AccountControl accountControl = new AccountControl();
+
     @FXML
     void buttonVaiIndietro(ActionEvent event) throws IOException {
-        pannelloImpostazioni = FXMLLoader.load(getClass()
-                .getResource(
-                        "../../../../../../resources/com/tf/teamflowcode/Pannelli/fxml/impostazioni.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(pannelloImpostazioni, 810, 500);
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.setTitle("Impostazioni");
-        stage.show();
+        if (accountControl.returnRuolo().equals("Amministratore")) {
+            pannelloImpostazioni = FXMLLoader.load(getClass()
+                    .getResource(
+                            "../../../../../../resources/com/tf/teamflowcode/Pannelli/fxml/impostazioniAmministratore.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(pannelloImpostazioni, 810, 500);
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setTitle("Impostazioni");
+            stage.show();
+        } else {
+            pannelloImpostazioni = FXMLLoader.load(getClass()
+                    .getResource(
+                            "../../../../../../resources/com/tf/teamflowcode/Pannelli/fxml/impostazioniImpiegato.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(pannelloImpostazioni, 810, 500);
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setTitle("Impostazioni");
+            stage.show();
+        }
     }
 
     @FXML
@@ -98,5 +116,14 @@ public class ModificaPassword {
         passwordText3.setVisible(false);
     }
 
-
+    @FXML
+    void buttonConferma(ActionEvent event) throws IOException {
+        GestorePassword gestorePassword = new GestorePassword();
+        if(gestorePassword.controllaPassword(password1.getText(), password2.getText(), password3.getText(),
+                passwordText1.getText(), passwordText2.getText(), passwordText3.getText(), event)){
+                    if(gestorePassword.controllaPasswordQuery(password1.getText(), passwordText1.getText(), event)){
+                        gestorePassword.modificaPassword(password2.getText(), event);
+                    }
+                }
+    }
 }

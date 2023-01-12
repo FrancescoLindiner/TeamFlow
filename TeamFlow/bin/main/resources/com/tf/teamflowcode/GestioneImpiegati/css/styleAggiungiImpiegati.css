@@ -1,0 +1,53 @@
+#label {
+    -fx-font-weight: bold;
+    -fx-font-size: 25;
+}
+
+#textField1 {
+    -fx-background-radius: 10px;
+    -fx-border-width: 1.3px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #000000;
+}
+
+#textField2 {
+    -fx-background-radius: 10px;
+    -fx-border-width: 1.3px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #000000;
+}
+
+#textField3 {
+    -fx-background-radius: 10px;
+    -fx-border-width: 1.3px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #000000;
+}
+
+#textField4 {
+    -fx-background-radius: 10px;
+    -fx-border-width: 1.3px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #000000;
+}
+
+#buttonConferma {
+    -fx-font-weight: bold;
+    -fx-font-size: 15;
+    -fx-background-color: white;
+    -fx-background-radius: 5px;
+}
+
+#buttonCerca {
+    -fx-font-weight: bold;
+    -fx-font-size: 15;
+    -fx-background-color: white;
+    -fx-background-radius: 5px;
+}
+
+#buttonAggiungiImpiegati {
+    -fx-font-weight: bold;
+    -fx-font-size: 15;
+    -fx-background-color: white;
+    -fx-background-radius: 5px;
+}

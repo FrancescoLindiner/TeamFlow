@@ -1,0 +1,11 @@
+#labelImpostazioni {
+    -fx-font-weight: bold;
+    -fx-font-size: 25;
+}
+
+#buttonModificaPassword {
+    -fx-font-weight: bold;
+    -fx-font-size: 15;
+    -fx-background-color: white;
+    -fx-background-radius: 10px;
+}

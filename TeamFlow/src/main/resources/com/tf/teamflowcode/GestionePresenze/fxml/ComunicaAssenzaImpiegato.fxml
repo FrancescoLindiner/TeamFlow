@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="810.0" stylesheets="@../css/styleModuloRichiediPermesso.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.tf.teamflowcode.GestionePresenze.Interface.ComunicaAssenza">
+   <children>
+      <ImageView fitHeight="500.0" fitWidth="810.0">
+         <image>
+            <Image url="@../../Pannelli/img/SfondoBlurImpiegato.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="92.0" fitWidth="98.0" layoutX="-15.0" layoutY="-19.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Pannelli/img/tastoIndietro.png" />
+         </image>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="329.0" fitWidth="539.0" layoutX="223.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../sfondo.png" />
+         </image>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="62.0" fitWidth="66.0" layoutX="216.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/IconaComunicaAssenza.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="280.0" layoutY="129.0" text="Assenza Malattia">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <Button layoutX="5.0" layoutY="2.0" mnemonicParsing="false" onAction="#vaiIndietro" opacity="0.0" prefHeight="52.0" prefWidth="54.0" text="Button" />
+      <DatePicker id="datePicker" layoutX="348.0" layoutY="238.0" prefHeight="52.0" prefWidth="288.0" promptText="Data" />
+      <ImageView fitHeight="52.0" fitWidth="54.0" layoutX="296.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Pannelli/img/Picture2.png" />
+         </image>
+      </ImageView>
+      <Button id="buttonConferma" layoutX="440.0" layoutY="348.0" mnemonicParsing="false" text="CONFERMA">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+   </children>
+</Pane>

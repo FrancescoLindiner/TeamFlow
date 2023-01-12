@@ -65,6 +65,16 @@
 
 .label {
     -fx-font-weight: bold;
+    -fx-font-size: 15;
+}
+
+#label2 {
+    -fx-font-weight: bold;
+    -fx-font-size: 15;
+}
+
+#nomeUtente {
+    -fx-font-weight: bold;
     -fx-font-size: 13;
 }
 

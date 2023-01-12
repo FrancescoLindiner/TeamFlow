@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="810.0" stylesheets="@../css/styleAggiungiImpiegati.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.tf.teamflowcode.GestineImpiegati.Interface.GestioneImpiegati">
+   <children>
+      <ImageView fitHeight="500.0" fitWidth="810.0">
+         <image>
+            <Image url="@../../Pannelli/img/SfondoBlur.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="329.0" fitWidth="539.0" layoutX="223.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../sfondo.png" />
+         </image>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="61.0" layoutX="223.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../GestioneAccount/img/IconaUtenteTextField.png" />
+         </image>
+      </ImageView>
+      <Label id="label" layoutX="276.0" layoutY="127.0" text="Gestione Impiegati" />
+      <TextField id="textField1" layoutX="338.0" layoutY="186.0" prefHeight="50.0" prefWidth="309.0" promptText="Nome" />
+      <TextField id="textField2" layoutX="338.0" layoutY="244.0" prefHeight="50.0" prefWidth="309.0" promptText="Cognome" />
+      <TextField id="textField3" layoutX="338.0" layoutY="302.0" prefHeight="50.0" prefWidth="309.0" promptText="Matricola" />
+      <Button id="buttonCerca" layoutX="463.0" layoutY="362.0" mnemonicParsing="false" onAction="#buttonCerca" text="Cerca" />
+      <Button id="buttonAggiungiImpiegati" fx:id="buttonAggiungiImpiegato" layoutX="414.0" layoutY="404.0" mnemonicParsing="false" onAction="#buttonAggiungiImpiegati" text="Aggiungi Impiegati" />
+      <ImageView fitHeight="92.0" fitWidth="98.0" layoutX="-15.0" layoutY="-19.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Pannelli/img/tastoIndietro.png" />
+         </image>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
+      <Button layoutX="4.0" mnemonicParsing="false" onAction="#buttonVaiIndietro" opacity="0.0" prefHeight="59.0" prefWidth="53.0" text="Button" />
+   </children>
+</Pane>

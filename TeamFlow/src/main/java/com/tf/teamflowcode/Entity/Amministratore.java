@@ -1,30 +1,13 @@
 package main.java.com.tf.teamflowcode.Entity;
 
-public class Amministratore {
-    private String nome, cognome;
+public class Amministratore extends Dipendente{
 
-    
-    public Amministratore() {
+    private String tipologia;
+
+    public Amministratore(String matricola, String nome, String cognome, String email, String tipologia) {
+        super(matricola, nome, cognome, email, tipologia);
+        this.tipologia = "Amministratore";
+        
     }
 
-    public Amministratore(String nome, String cognome) {
-        this.nome = nome;
-        this.cognome = cognome;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCognome() {
-        return cognome;
-    }
-
-    public void setCognome(String cognome) {
-        this.cognome = cognome;
-    }
 }

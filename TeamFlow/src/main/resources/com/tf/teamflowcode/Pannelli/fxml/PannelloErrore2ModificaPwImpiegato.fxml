@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="810.0" stylesheets="@../css/styleConfirm.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.tf.teamflowcode.Pannelli.Interface.PannelloErroreModificaPw">
+   <children>
+      <ImageView fitHeight="500.0" fitWidth="810.0">
+         <image>
+            <Image url="@../../GestioneAccount/img/SfondoBlurErroreAmministratore.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="152.0" fitWidth="372.0" layoutX="300.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/sfondoRosso.png" />
+         </image>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
+      <Button id="riprovaButton" layoutX="442.0" layoutY="306.0" mnemonicParsing="false" onAction="#buttonRiprova" text="RIPROVA">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+      <Label layoutX="349.0" layoutY="262.0" text="Vecchia Password Errata">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="58.0" fitWidth="65.0" layoutX="453.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/X.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>

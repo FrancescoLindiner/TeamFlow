@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="810.0" stylesheets="@../css/styleTableTurni.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.tf.teamflowcode.GestioneOrariEStipendi.Interface.TurniInterface">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.tf.teamflowcode.GestioneOrariEStipendi.Interface.TurniInterface">
    <children>
       <ImageView fitHeight="500.0" fitWidth="810.0">
          <image>
@@ -35,13 +35,11 @@
             <Font name="System Bold" size="30.0" />
          </font>
       </Label>
-      <TableView id="table" fx:id="tableView" layoutX="305.0" layoutY="192.0" prefHeight="200.0" prefWidth="375.0" stylesheets="@../css/styleTableTurni.css">
+      <TableView id="table" fx:id="tableView" layoutX="305.0" layoutY="192.0" prefHeight="200.0" prefWidth="375.0">
         <columns>
-          <TableColumn id="tableRow" prefWidth="75.0" text="LUN" />
-          <TableColumn prefWidth="75.0" text="MAR" />
-            <TableColumn prefWidth="75.0" text="MER" />
-            <TableColumn prefWidth="75.0" text="GIO" />
-            <TableColumn prefWidth="75.0" text="VEN" />
+          <TableColumn id="tableRow" fx:id="DATA" prefWidth="125.0" text="DATA" />
+          <TableColumn fx:id="ORAINIZIO" prefWidth="125.0" text="ORA INIZIO" />
+            <TableColumn fx:id="ORAFINE" prefWidth="125.0" text="ORA FINE" />
         </columns>
       </TableView>
       <ImageView fitHeight="92.0" fitWidth="98.0" layoutX="-15.0" layoutY="-19.0" pickOnBounds="true" preserveRatio="true">

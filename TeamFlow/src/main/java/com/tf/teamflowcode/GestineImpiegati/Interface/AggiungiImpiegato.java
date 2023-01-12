@@ -26,11 +26,12 @@ public class AggiungiImpiegato {
 
     @FXML
     void buttonVaiIndietro(ActionEvent event) throws IOException {
-        Parent splashScreen = FXMLLoader.load(getClass()
+        
+        Parent parent = FXMLLoader.load(getClass()
                 .getResource(
                         "../../../../../../resources/com/tf/teamflowcode/GestioneImpiegati/fxml/GestioneImpiegati.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(splashScreen, 810, 500);
+        Scene scene = new Scene(parent, 810, 500);
         stage.setScene(scene);
         stage.setResizable(false);
         stage.setTitle("Gestione Impiegati");

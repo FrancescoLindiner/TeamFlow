@@ -8,6 +8,7 @@
         "TeamFlow/lib/javafx.media.jar",
         "TeamFlow/lib/javafx.swing.jar",
         "TeamFlow/lib/javafx.web.jar",
-        "TeamFlow/lib/javafx-swt.jar"
+        "TeamFlow/lib/javafx-swt.jar",
+        "TeamFlow/mysql-connector-java-8.0.26.jar"
     ]
 }

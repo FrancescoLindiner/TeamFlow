@@ -12,7 +12,7 @@
    <children>
       <ImageView fitHeight="500.0" fitWidth="810.0">
          <image>
-            <Image url="@../../Pannelli/img/SfondoBlur.png" />
+            <Image url="@../../Pannelli/img/SfondoBlurAmministratore.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="329.0" fitWidth="539.0" layoutX="223.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">

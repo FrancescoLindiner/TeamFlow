@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="810.0" stylesheets="@../css/styleAggiungiImpiegati.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.tf.teamflowcode.GestineImpiegati.Interface.AggiungiImpiegato">
+   <children>
+      <ImageView fitHeight="500.0" fitWidth="810.0">
+         <image>
+            <Image url="@../../Pannelli/img/SfondoBlur.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="329.0" fitWidth="539.0" layoutX="223.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../sfondo.png" />
+         </image>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="61.0" layoutX="223.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../GestioneAccount/img/IconaUtenteTextField.png" />
+         </image>
+      </ImageView>
+      <Label id="label" layoutX="276.0" layoutY="127.0" text="Aggiungi Impiegato" />
+      <TextField id="textField2" layoutX="331.0" layoutY="185.0" prefHeight="41.0" prefWidth="335.0" promptText="Nome" stylesheets="@../css/styleAggiungiImpiegati.css" />
+      <TextField id="textField3" layoutX="331.0" layoutY="285.0" prefHeight="41.0" prefWidth="335.0" promptText="Grado" stylesheets="@../css/styleAggiungiImpiegati.css" />
+      <TextField id="textField4" layoutX="331.0" layoutY="335.0" prefHeight="41.0" prefWidth="335.0" promptText="Email" stylesheets="@../css/styleAggiungiImpiegati.css" />
+      <Button id="buttonConferma" fx:id="buttonConferma" layoutX="447.0" layoutY="397.0" mnemonicParsing="false" onAction="#buttonConferma" text="Conferma">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+      <TextField id="textField1" layoutX="331.0" layoutY="235.0" prefHeight="41.0" prefWidth="335.0" promptText="Cognome" stylesheets="@../css/styleAggiungiImpiegati.css" />
+      <ImageView fitHeight="92.0" fitWidth="98.0" layoutX="-15.0" layoutY="-19.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Pannelli/img/tastoIndietro.png" />
+         </image>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
+      <Button fx:id="buttonVaiIndietro" layoutX="5.0" layoutY="2.0" mnemonicParsing="false" onAction="#buttonVaiIndietro" opacity="0.0" prefHeight="50.0" prefWidth="53.0" text="Button" />
+   </children>
+</Pane>

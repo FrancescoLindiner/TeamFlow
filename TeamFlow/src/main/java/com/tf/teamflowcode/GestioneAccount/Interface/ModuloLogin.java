@@ -13,6 +13,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import main.java.com.tf.teamflowcode.GestioneAccount.Control.AccountControl;
 import javafx.scene.Node;
 
 public class ModuloLogin {
@@ -37,6 +38,9 @@ public class ModuloLogin {
     private URL location;
 
     @FXML
+    private TextField textFiled;
+
+    @FXML
     private Button loginButton;
 
     @FXML
@@ -44,14 +48,28 @@ public class ModuloLogin {
 
     @FXML
     void login(ActionEvent event) throws IOException, InterruptedException {
-        parent = FXMLLoader.load(getClass()
-                .getResource(
-                        "../../../../../../resources/com/tf/teamflowcode/Pannelli/fxml/splahScreenConfirm.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(parent, 810, 500);
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
+        AccountControl accountControl = new AccountControl();
+        boolean isCorrect = accountControl.controllaDatiLogin(textFiled.getText(), password.getText());
+        if (!isCorrect || textFiled.getText()=="" || password.getText()=="") {
+            parent = FXMLLoader.load(getClass()
+                    .getResource(
+                            "../../../../../../resources/com/tf/teamflowcode/Pannelli/fxml/SplashScreenErrore.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(parent, 810, 500);
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
+        }else{
+            parent = FXMLLoader.load(getClass()
+                    .getResource(
+                            "../../../../../../resources/com/tf/teamflowcode/Pannelli/fxml/splahScreenConfirm.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(parent, 810, 500);
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
+        }
+
     }
 
     @FXML
