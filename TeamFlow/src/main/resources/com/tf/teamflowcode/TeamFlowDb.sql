@@ -1,9 +1,10 @@
 CREATE DATABASE progetto;
 
 USE progetto;
+insert into dipendente (nome, cognome, email, password, tipologia) values ('Giuseppe' , 'Garibaldi', 'giuseppe.garibaldi@gmail.com', '123', 'Impiegato A');
 
 CREATE TABLE dipendente (
-  matricola INT PRIMARY KEY,
+  matricola INT PRIMARY KEY auto_increment,
   nome VARCHAR(255),
   cognome VARCHAR(255),
   email VARCHAR(255),
@@ -18,7 +19,7 @@ CREATE TABLE turno (
   ora_inizio TIME,
   ora_fine TIME,
   PRIMARY KEY (data, t_matricola),
-  FOREIGN KEY (t_matricola) REFERENCES dipendente(matricola)
+  FOREIGN KEY (t_matricola) REFERENCES dipendente(matricola) on delete cascade
 );
 
 CREATE TABLE stipendio (
@@ -28,12 +29,16 @@ CREATE TABLE stipendio (
   ore_straordinario INT,
   importo double,
   PRIMARY KEY (anno_s, mese_s, s_matricola),
-  FOREIGN KEY (s_matricola) REFERENCES dipendente(matricola)
+  FOREIGN KEY (s_matricola) REFERENCES dipendente(matricola) on delete cascade
 );
 
 select * from dipendente;
 select * from turno;
 select * from stipendio;
+
+drop table dipendente
+drop table turno
+drop table stipendio
 
 INSERT INTO dipendente (matricola, nome, cognome, email, password, tipologia) VALUES
   (1, 'Mario', 'Rossi', 'mario.rossi@gmail.com','MRss1','impiegato A'),
@@ -50,11 +55,6 @@ INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine) VALUES
   ('2022-01-01', 'mattina', 3, '08:00:00', '16:00:00'),
   ('2022-01-02','pomeriggio', 3, '16:00:00', '00:00:00'),
   ('2022-01-03','notte', 3, '00:00:00', '8:00:00');
-
-SELECT importo
-FROM stipendio
-WHERE s_matricola = 1
-ORDER BY anno_s DESC, mese_s DESC;
 
 INSERT INTO stipendio (anno_s, mese_s, s_matricola, ore_straordinario, importo) VALUES
   (2022, 05, 1, 2, 40.00),

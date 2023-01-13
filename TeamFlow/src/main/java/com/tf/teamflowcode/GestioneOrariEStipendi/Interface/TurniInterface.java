@@ -17,6 +17,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import main.java.com.tf.teamflowcode.GestioneAccount.Control.AccountControl;
+import main.java.com.tf.teamflowcode.GestioneOrariEStipendi.Control.GestioneTurniControl;
 import javafx.scene.Node;
 
 public class TurniInterface implements Initializable {
@@ -64,14 +65,10 @@ public class TurniInterface implements Initializable {
     }
 
     public ObservableList<Turno> addRow() {
-        ObservableList<Turno> list = FXCollections.observableArrayList();
-        list.add(new Turno("11/01/2023", "12:00", "18:00"));
-        list.add(new Turno("12/01/2023", "14:00", "20:00"));
-        list.add(new Turno("13/01/2023", "15:00", "21:00"));
-        list.add(new Turno("15/01/2023", "11:00", "17:00"));
-        list.add(new Turno("16/01/2023", "19:00", "00:00"));
-        list.add(new Turno("17/01/2023", "14:00", "18:00"));
+        GestioneTurniControl gestioneTurniControl = new GestioneTurniControl();
 
+        ObservableList<Turno> list = gestioneTurniControl.prendiTurni();
+        
         return list;
     }
 

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.tf.teamflowcode.Pannelli.Interface.PannelloConfermaAggiungiImpiegato">
+   <children>
+      <ImageView fitHeight="500.0" fitWidth="810.0">
+         <image>
+            <Image url="@../../GestioneImpiegati/img/SfondoBlurAggiungiImpiegato.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="194.0" fitWidth="362.0" layoutX="318.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/sfondoVerde.png" />
+         </image>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
+      <Button id="buttonConferma" layoutX="447.0" layoutY="307.0" mnemonicParsing="false" onAction="#buttonConferma" stylesheets="@../../GestioneAccount/css/styleModificaPassword.css" text="CONFERMA">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+      <ImageView fitHeight="60.0" fitWidth="72.0" layoutX="464.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/OK.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="331.0" layoutY="267.0" text="Impiegato Aggiunto Correttamente">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

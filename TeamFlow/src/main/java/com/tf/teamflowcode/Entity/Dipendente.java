@@ -50,4 +50,9 @@ public class Dipendente {
     public String getTipologia() {
         return tipologia;
     }   
+
+    @Override
+    public String toString(){
+        return getCognome() + " " + getCognome() + ", " + getMatricola() + ", " + getEmail() + ", " + getTipologia();
+    }
 }

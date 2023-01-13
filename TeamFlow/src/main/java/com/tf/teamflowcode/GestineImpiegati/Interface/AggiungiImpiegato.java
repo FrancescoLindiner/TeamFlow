@@ -8,7 +8,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import main.java.com.tf.teamflowcode.GestineImpiegati.Control.AggiungiControl;
 import javafx.scene.Node;
 
 public class AggiungiImpiegato {
@@ -20,8 +22,22 @@ public class AggiungiImpiegato {
     private Button buttonVaiIndietro;
 
     @FXML
-    void buttonConferma(ActionEvent event) {
+    private TextField textFieldCognome;
 
+    @FXML
+    private TextField textFieldEmail;
+
+    @FXML
+    private TextField textFieldGrado;
+
+    @FXML
+    private TextField textFiledNome;
+
+    @FXML
+    void buttonConferma(ActionEvent event) throws IOException {
+        AggiungiControl aggiungiControl = new AggiungiControl();
+
+        aggiungiControl.aggiungiImpiegato(textFiledNome.getText(), textFieldCognome.getText(), textFieldGrado.getText(), textFieldEmail.getText(), event);
     }
 
     @FXML

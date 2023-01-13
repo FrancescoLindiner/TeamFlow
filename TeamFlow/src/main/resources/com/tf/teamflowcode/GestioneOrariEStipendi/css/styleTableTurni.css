@@ -10,6 +10,9 @@
     -fx-background-color: transparent;
 }
 
+/* Spaltenköpfe
+    Struktur column-header-background -> column-header */
+
 .table-view .column-header-background{
     -fx-background-color: linear-gradient(#131313 0%, #424141 100%);
 }
@@ -52,11 +55,4 @@
 .table-view > .virtual-flow > .scroll-bar:horizontal > .track,
 .table-view > .virtual-flow > .scroll-bar:horizontal > .track-background {
     -fx-background-color: transparent;
-}
-
-
-
-.table-view > .virtual-flow > .scroll-bar > .increment-button, 
-.table-view > .virtual-flow > .scroll-bar > .decrement-button {
-    -fx-opacity: 0;
 }

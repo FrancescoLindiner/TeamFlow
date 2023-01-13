@@ -8,6 +8,13 @@
             "type": "java",
             "name": "Launch Main",
             "request": "launch",
+            "mainClass": "com.ogc.pharmagcode/com.ogc.pharmagcode.Main",
+            "projectName": ""
+        },
+        {
+            "type": "java",
+            "name": "Launch Main",
+            "request": "launch",
             "mainClass": "main.java.com.tf.teamflowcode.Main",
             "projectName": "Progetto_931aac79"
         },

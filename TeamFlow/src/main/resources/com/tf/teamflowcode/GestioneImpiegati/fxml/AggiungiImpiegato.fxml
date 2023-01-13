@@ -29,15 +29,15 @@
          </image>
       </ImageView>
       <Label id="label" layoutX="276.0" layoutY="127.0" text="Aggiungi Impiegato" />
-      <TextField id="textField2" layoutX="331.0" layoutY="185.0" prefHeight="41.0" prefWidth="335.0" promptText="Nome" stylesheets="@../css/styleAggiungiImpiegati.css" />
-      <TextField id="textField3" layoutX="331.0" layoutY="285.0" prefHeight="41.0" prefWidth="335.0" promptText="Grado" stylesheets="@../css/styleAggiungiImpiegati.css" />
-      <TextField id="textField4" layoutX="331.0" layoutY="335.0" prefHeight="41.0" prefWidth="335.0" promptText="Email" stylesheets="@../css/styleAggiungiImpiegati.css" />
+      <TextField id="textField2" fx:id="textFiledNome" layoutX="331.0" layoutY="185.0" prefHeight="41.0" prefWidth="335.0" promptText="Nome" stylesheets="@../css/styleAggiungiImpiegati.css" />
+      <TextField id="textField3" fx:id="textFieldGrado" layoutX="331.0" layoutY="285.0" prefHeight="41.0" prefWidth="335.0" promptText="Grado" stylesheets="@../css/styleAggiungiImpiegati.css" />
+      <TextField id="textField4" fx:id="textFieldEmail" layoutX="331.0" layoutY="335.0" prefHeight="41.0" prefWidth="335.0" promptText="Email" stylesheets="@../css/styleAggiungiImpiegati.css" />
       <Button id="buttonConferma" fx:id="buttonConferma" layoutX="447.0" layoutY="397.0" mnemonicParsing="false" onAction="#buttonConferma" text="Conferma">
          <effect>
             <DropShadow />
          </effect>
       </Button>
-      <TextField id="textField1" layoutX="331.0" layoutY="235.0" prefHeight="41.0" prefWidth="335.0" promptText="Cognome" stylesheets="@../css/styleAggiungiImpiegati.css" />
+      <TextField id="textField1" fx:id="textFieldCognome" layoutX="331.0" layoutY="235.0" prefHeight="41.0" prefWidth="335.0" promptText="Cognome" stylesheets="@../css/styleAggiungiImpiegati.css" />
       <ImageView fitHeight="92.0" fitWidth="98.0" layoutX="-15.0" layoutY="-19.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Pannelli/img/tastoIndietro.png" />
