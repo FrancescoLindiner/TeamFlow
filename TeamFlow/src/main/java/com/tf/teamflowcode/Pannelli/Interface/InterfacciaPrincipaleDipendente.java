@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -17,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import main.java.com.tf.teamflowcode.GestioneAccount.Control.AccountControl;
+import main.java.com.tf.teamflowcode.GestioneOrariEStipendi.Control.ControlStipendi;
 import javafx.scene.Node;
 
 public class InterfacciaPrincipaleDipendente implements Initializable {
@@ -119,7 +122,6 @@ public class InterfacciaPrincipaleDipendente implements Initializable {
         }
     }
 
-
     @FXML
     void buttonTurni(ActionEvent event) throws IOException, ParseException {
 
@@ -142,6 +144,20 @@ public class InterfacciaPrincipaleDipendente implements Initializable {
 
     @FXML
     void mostraStipendi(ActionEvent event) throws IOException {
+
+        DateFormat data = new SimpleDateFormat("dd");
+        Date date = new Date();
+        String dataDiOggi = data.format(date);
+
+        DateFormat ora = new SimpleDateFormat("HH:mm");
+        Date ora2 = new Date();
+        String oraDiOggi = ora.format(ora2);
+
+        if (dataDiOggi.equals("27") && oraDiOggi.equals("10:00")) {
+            ControlStipendi controlStipendi = new ControlStipendi();
+            controlStipendi.generaStipendi();
+        }
+
         if (accountControl.returnRuolo().equals("Amministratore")) {
             parent = FXMLLoader.load(getClass()
                     .getResource(
@@ -257,8 +273,16 @@ public class InterfacciaPrincipaleDipendente implements Initializable {
     }
 
     @FXML
-    void buttonNotifiche(ActionEvent event) {
-
+    void buttonNotifiche(ActionEvent event) throws IOException {
+        parent = FXMLLoader.load(getClass()
+                .getResource(
+                        "../../../../../../resources/com/tf/teamflowcode/Pannelli/fxml/SezioneNotifiche.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(parent, 810, 500);
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.setTitle("Sezione notifiche");
+        stage.show();
     }
 
 }

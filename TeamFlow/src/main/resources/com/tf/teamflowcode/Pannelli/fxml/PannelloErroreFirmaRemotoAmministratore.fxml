@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.tf.teamflowcode.Pannelli.Interface.PannelloFirmaRemoto">
    <children>
       <ImageView fitHeight="500.0" fitWidth="810.0">
@@ -34,7 +33,7 @@
             <Image url="@../img/X.png" />
          </image>
       </ImageView>
-      <Label layoutX="318.0" layoutY="270.0" text="Non è possibile concedere il permesso">
+      <Label layoutX="338.0" layoutY="270.0" text="Non è possibile registrare la firma">
          <font>
             <Font name="System Bold" size="19.5" />
          </font>

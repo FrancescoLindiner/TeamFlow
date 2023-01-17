@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import main.java.com.tf.teamflowcode.GestioneAccount.Control.AccountControl;
 import main.java.com.tf.teamflowcode.GestioneOrariEStipendi.Control.ControlStipendi;
@@ -29,6 +31,9 @@ public class MostraStipendi implements Initializable{
     @FXML
     private Label labelData;
 
+    @FXML
+    private ListView<String> listView;
+
     public void setInterfacciaStipendio(){
         ControlStipendi c = new ControlStipendi();
         AccountControl accountControl = new AccountControl();
@@ -40,6 +45,14 @@ public class MostraStipendi implements Initializable{
         
         labelStipendio.setText(stipendio);
         labelData.setText(mese + " - " + anno);
+    }
+
+    public ObservableList<String> addRow() {
+        ControlStipendi controlStipendi = new ControlStipendi();
+
+        ObservableList<String> list = controlStipendi.returnListaStipendi();
+        
+        return list;
     }
 
     @FXML
@@ -71,5 +84,6 @@ public class MostraStipendi implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setInterfacciaStipendio();
+        listView.setItems(addRow());
     }
 }

@@ -104,8 +104,8 @@ public class GeneraOrarioControl {
             System.out.println("Connecting to selected database...");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Progetto?", "root", "root");
 
-            String sql = "INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine, presenza) VALUES ('" + data
-                    + "', 'notte', '" + matricola + "', '" + oraNotteInizio2 + "', '" + oraNotteFine2 + "', " + false + ");";
+            String sql = "INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine, presenza, firma_ingresso, firma_uscita) VALUES ('" + data
+                    + "', 'notte', '" + matricola + "', '" + oraNotteInizio2 + "', '" + oraNotteFine2 + "', " + false + ", " + false + ", " + false + ");";
 
             System.out.println("Inserting record into the table...");
 
@@ -155,11 +155,11 @@ public class GeneraOrarioControl {
             System.out.println("Connecting to selected database...");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Progetto?", "root", "root");
 
-            String sql = "INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine, presenza) VALUES ('" + data
-                    + "', 'mattina', '" + matricola + "', '" + ora_inizioMattina2 + "', '" + ora_fineMattina2 + "', " + false + ");";
+            String sql = "INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine, presenza, firma_ingresso, firma_uscita) VALUES ('" + data
+                    + "', 'mattina', '" + matricola + "', '" + ora_inizioMattina2 + "', '" + ora_fineMattina2 + "', " + false + ", " + false + ", " + false + ");";;
 
-            String sql2 = "INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine, presenza) VALUES ('" + data
-                    + "', 'pomeriggio', '" + matricola + "', '" + ora_inizioPome2 + "', '" + ora_finePome2 + "', " + false + ");";
+            String sql2 = "INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine, presenza, firma_ingresso, firma_uscita) VALUES ('" + data
+                    + "', 'pomeriggio', '" + matricola + "', '" + ora_inizioPome2 + "', '" + ora_finePome2 + "', " + false + ", " + false + ", " + false + ");";
 
             System.out.println("Inserting record into the table...");
 
@@ -210,11 +210,11 @@ public class GeneraOrarioControl {
             System.out.println("Connecting to selected database...");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Progetto?", "root", "root");
 
-            String sql = "INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine, presenza) VALUES ('" + data
-                    + "', 'mattina', '" + matricola + "', '" + ora_inizioMattina2 + "', '" + ora_fineMattina2 + "', " + false + ");";
+            String sql = "INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine, presenza, firma_ingresso, firma_uscita) VALUES ('" + data
+                    + "', 'mattina', '" + matricola + "', '" + ora_inizioMattina2 + "', '" + ora_fineMattina2 + "', " + false + ", " + false + ", " + false + ");";
 
-            String sql2 = "INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine, presenza) VALUES ('" + data
-                    + "', 'pomeriggio', '" + matricola + "', '" + ora_inizioPome2 + "', '" + ora_finePome2 + "', " + false + ");";
+            String sql2 = "INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine, presenza, firma_ingresso, firma_uscita) VALUES ('" + data
+                    + "', 'pomeriggio', '" + matricola + "', '" + ora_inizioPome2 + "', '" + ora_finePome2 + "', " + false + ", " + false + ", " + false + ");";
 
             System.out.println("Inserting record into the table...");
 
@@ -265,11 +265,11 @@ public class GeneraOrarioControl {
             System.out.println("Connecting to selected database...");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Progetto?", "root", "root");
 
-            String sql = "INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine, presenza) VALUES ('" + data
-                    + "', 'mattina', '" + matricola + "', '" + ora_inizioMattina2 + "', '" + ora_fineMattina2 + "', " + false + ");";
+            String sql = "INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine, presenza, firma_ingresso, firma_uscita) VALUES ('" + data
+                    + "', 'mattina', '" + matricola + "', '" + ora_inizioMattina2 + "', '" + ora_fineMattina2 + "', " + false + ", " + false + ", " + false + ");";
 
-            String sql2 = "INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine) VALUES ('" + data
-                    + "', 'pomeriggio', '" + matricola + "', '" + ora_inizioPome2 + "', '" + ora_finePome2 + "', " + false + ");";
+            String sql2 = "INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine, presenza, firma_ingresso, firma_uscita) VALUES ('" + data
+                    + "', 'pomeriggio', '" + matricola + "', '" + ora_inizioPome2 + "', '" + ora_finePome2 + "', " + false + ", " + false + ", " + false + ");";
 
             System.out.println("Inserting record into the table...");
 

@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -33,12 +34,12 @@
             <Font name="System Bold" size="30.0" />
          </font>
       </Label>
-      <Label layoutX="333.0" layoutY="214.0" text="Il tuo ultimo stipendio è di:">
+      <Label layoutX="247.0" layoutY="184.0" text="Il tuo ultimo stipendio">
          <font>
-            <Font name="System Bold" size="25.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="labelStipendio" layoutX="450.0" layoutY="283.0" prefHeight="45.0" prefWidth="135.0" text="0,0 €">
+      <Label fx:id="labelStipendio" layoutX="290.0" layoutY="266.0" prefHeight="45.0" prefWidth="125.0" text="0000.0 €">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>
@@ -52,9 +53,20 @@
          </effect>
       </ImageView>
       <Button layoutX="9.0" layoutY="5.0" mnemonicParsing="false" onAction="#vaiIndietro" opacity="0.0" prefHeight="45.0" prefWidth="45.0" text="Button" />
-      <Label fx:id="labelData" layoutX="457.0" layoutY="371.0" text="[Data]">
+      <Label fx:id="labelData" layoutX="330.0" layoutY="349.0" text="[Data]">
          <font>
             <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <ListView fx:id="listView" layoutX="492.0" layoutY="211.0" prefHeight="200.0" prefWidth="250.0" />
+      <Label layoutX="333.0" layoutY="213.0" text="è di:">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="550.0" layoutY="184.0" text="Storico stipendi">
+         <font>
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
    </children>

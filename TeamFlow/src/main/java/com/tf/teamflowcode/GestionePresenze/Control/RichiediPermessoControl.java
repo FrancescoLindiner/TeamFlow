@@ -199,6 +199,8 @@ public class RichiediPermessoControl {
             return true;
         } else if (meseIntDaControllare == meseDiOggiInt) {
             if (giornoIntDaControllare > giornoDiOggiInt) {
+                return true;
+            } else if (giornoIntDaControllare == giornoDiOggiInt) {
                 String subStringOraTurno = oraInizio.substring(0, 2);
                 SimpleDateFormat f = new SimpleDateFormat("HH");
                 String fd = f.format(new Date());
@@ -217,7 +219,6 @@ public class RichiediPermessoControl {
         } else {
             return false;
         }
-
     }
 
     private String prendiOra(String data) {
@@ -280,7 +281,7 @@ public class RichiediPermessoControl {
         return null;
     }
 
-    public boolean inserisciPermessoGiornoIntero(String data) {
+    public boolean inserisciPermessoGiornoIntero(String data, String motivazione) {
         Statement stmt = null;
         Connection conn = null;
 
@@ -293,7 +294,7 @@ public class RichiediPermessoControl {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Progetto?", "root", "root");
 
             String sql = "INSERT INTO permesso (p_matricola, data_p, ora_inizio_turno, ora_fine_turno, motivazione) VALUES ("
-                    + accountControl.returnMatricola() + ", '" + data + "', '-', '-', 'permesso intero');";
+                    + accountControl.returnMatricola() + ", '" + data + "', '-', '-', '" + motivazione + "');";
 
             System.out.println("Inserting record into the table...");
 
@@ -335,7 +336,7 @@ public class RichiediPermessoControl {
         return false;
     }
 
-    public boolean inserisciPermessoOre(String data, String oraInizio, String oraFine) {
+    public boolean inserisciPermessoOre(String data, String oraInizio, String oraFine, String motivazione) {
         Statement stmt = null;
         Connection conn = null;
 
@@ -349,7 +350,7 @@ public class RichiediPermessoControl {
 
             String sql = "INSERT INTO permesso (p_matricola, data_p, ora_inizio_turno, ora_fine_turno, motivazione) VALUES ("
                     + accountControl.returnMatricola() + ", '" + data + "', '" + oraInizio + "', '" + oraFine
-                    + "', 'permesso intero');";
+                    + "', '" + motivazione + "');";
 
             System.out.println("Inserting record into the table...");
 
@@ -406,7 +407,8 @@ public class RichiediPermessoControl {
             System.out.println("Connecting to selected database...");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Progetto?", "root", "root");
 
-            String sql = "SELECT ora_inizio, ora_fine FROM turno WHERE t_matricola=" + accountControl.returnMatricola() + " AND data='" + data + "';";
+            String sql = "SELECT ora_inizio, ora_fine FROM turno WHERE t_matricola=" + accountControl.returnMatricola()
+                    + " AND data='" + data + "';";
 
             System.out.println("Selecting record into the table...");
 

@@ -27,6 +27,17 @@ public class FirmaDaRemoto {
     @FXML
     void buttonConferma(ActionEvent event) throws IOException {
         FirmaRemotoControl firmaRemotoControl = new FirmaRemotoControl();
+        if (textArea.getText().equals("")) {
+            parent = FXMLLoader.load(getClass()
+                    .getResource(
+                            "../../../../../../resources/com/tf/teamflowcode/Pannelli/fxml/PannelloErroreFirmaRemotoAmministratore.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(parent, 810, 500);
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
+            return;
+        }
         if (!firmaRemotoControl.controllaFirma()) {
             if (accountControl.returnRuolo().equals("Amministratore")) {
                 parent = FXMLLoader.load(getClass()
@@ -50,7 +61,6 @@ public class FirmaDaRemoto {
 
         } else {
             if (firmaRemotoControl.aggiornaPresenza()) {
-                firmaRemotoControl.aggiornaPermessi(textArea.getText());
                 if (accountControl.returnRuolo().equals("Amministratore")) {
                     parent = FXMLLoader.load(getClass()
                             .getResource(

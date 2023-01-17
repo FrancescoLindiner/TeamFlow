@@ -19,11 +19,13 @@ CREATE TABLE turno (
   t_matricola INT,
   ora_inizio TIME,
   ora_fine TIME,
+  presenza boolean,
+  firma_ingresso boolean,
+  firma_uscita boolean,
   PRIMARY KEY (id_turno, t_matricola),
   FOREIGN KEY (t_matricola) REFERENCES dipendente(matricola) on delete cascade
 );
 
-drop table turno;
 CREATE TABLE stipendio (
   anno_s int,
   mese_s int,
@@ -35,13 +37,13 @@ CREATE TABLE stipendio (
 );
 
 CREATE TABLE permesso (
-  id_turno INT auto_increment,
+  id_permesso INT auto_increment,
   p_matricola INT,
   data_p DATE,
   ora_inizio_turno VARCHAR(255),
   ora_fine_turno VARCHAR(255),
   motivazione VARCHAR(255),
-  PRIMARY KEY (id_turno, p_matricola, data_p),
+  PRIMARY KEY (id_permesso, p_matricola, data_p),
   FOREIGN KEY (p_matricola) REFERENCES dipendente(matricola) on delete cascade
 );
 
@@ -54,7 +56,6 @@ INSERT INTO dipendente (matricola, nome, cognome, email, password, tipologia) VA
   (1, 'Mario', 'Rossi', 'mario.rossi@gmail.com','MRss1','impiegato A'),
   (2, 'Anna', 'Bianchi', 'anna.bianchi@gmail.com','ANnb2', 'impiegato B'),
   (3, 'Giorgio', 'Verdi', 'giorgio.verdi@gmail.com','GIve3', 'Amministratore');
-INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine) VALUES   ('2022-01-05', 'mattina', 3, '10:00:00', '13:00:00')
 
 INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine) VALUES
   ('2022-01-01', 'mattina', 1, '08:00:00', '16:00:00'),
@@ -68,9 +69,6 @@ INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine) VALUES
   ('2022-01-03','notte', 3, '00:00:00', '8:00:00');
 
 INSERT INTO stipendio (anno_s, mese_s, s_matricola, ore_straordinario, importo) VALUES
-  (2022, 05, 1, 2, 40.00),
-  (2022, 04, 1, 2, 150.00),
-  (2022, 01, 2, 5, 100.00),
-  (2022, 01, 1, 2, 50.00),
-  (2022, 01, 3, 10, 200.00),
-  (2022, 02, 1, 3, 75.00);
+  (2023, 01, 3, 2, 50.00),
+  (2023, 01, 2, 10, 200.00),
+  (2023, 02, 1, 3, 75.00);
