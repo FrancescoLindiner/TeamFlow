@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.tf.teamflowcode.Pannelli.Interface.PannelloAssenza">
+   <children>
+      <ImageView fitHeight="500.0" fitWidth="810.0">
+         <image>
+            <Image url="@../../GestionePresenze/img/SfondoBlurAssenzaAmministratore.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="152.0" fitWidth="369.0" layoutX="307.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/sfondoVerde.png" />
+         </image>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="93.0" fitWidth="72.0" layoutX="456.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/OK.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="318.0" layoutY="272.0" text="Assenza comunicata correttamente">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+      <Button id="buttonConferma" layoutX="439.0" layoutY="309.0" mnemonicParsing="false" onAction="#buttonConferma" stylesheets="@../../GestioneImpiegati/css/styleAggiungiImpiegati.css" text="CONFERMA">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+   </children>
+</Pane>

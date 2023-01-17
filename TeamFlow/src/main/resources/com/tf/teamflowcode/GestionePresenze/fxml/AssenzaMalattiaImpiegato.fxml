@@ -43,13 +43,13 @@
          </font>
       </Label>
       <Button layoutX="5.0" layoutY="2.0" mnemonicParsing="false" onAction="#vaiIndietro" opacity="0.0" prefHeight="52.0" prefWidth="54.0" text="Button" />
-      <DatePicker id="datePicker" layoutX="349.0" layoutY="238.0" prefHeight="52.0" prefWidth="288.0" promptText="Data" stylesheets="@../css/styleModuloRichiediPermesso.css" />
+      <DatePicker id="datePicker" fx:id="datePicker" layoutX="349.0" layoutY="238.0" prefHeight="52.0" prefWidth="288.0" promptText="Data" stylesheets="@../css/styleModuloRichiediPermesso.css" />
       <ImageView fitHeight="52.0" fitWidth="54.0" layoutX="296.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Pannelli/img/Picture2.png" />
          </image>
       </ImageView>
-      <Button id="buttonConferma" layoutX="440.0" layoutY="348.0" mnemonicParsing="false" stylesheets="@../css/styleModuloRichiediPermesso.css" text="CONFERMA">
+      <Button id="buttonConferma" layoutX="440.0" layoutY="348.0" mnemonicParsing="false" onAction="#buttonConferma" stylesheets="@../css/styleModuloRichiediPermesso.css" text="CONFERMA">
          <effect>
             <DropShadow />
          </effect>
