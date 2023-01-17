@@ -30,7 +30,6 @@ public class ModificaImpiegato {
     void buttonConferma(ActionEvent event) throws IOException {
         RicercaImpiegati ricercaImpiegati = new RicercaImpiegati();
         GestioneImpiegati gestioneImpiegati = new GestioneImpiegati();
-        ModificaImpiegato modificaImpiegato = new ModificaImpiegato();
         ObservableList<Dipendente> impiegato = ricercaImpiegati.impiegato;
         if (textFiledGrado.getText().equals("")) {
             gestioneImpiegati.modificaImpiegatoEmail(impiegato, textFiledEmail.getText());

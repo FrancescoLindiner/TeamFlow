@@ -15,6 +15,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import main.java.com.tf.teamflowcode.Entity.Turno;
 import main.java.com.tf.teamflowcode.GestioneAccount.Control.AccountControl;
 import main.java.com.tf.teamflowcode.GestioneOrariEStipendi.Control.GestioneTurniControl;
 import javafx.scene.Node;

@@ -5,8 +5,8 @@ import java.sql.*;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import main.java.com.tf.teamflowcode.Entity.Turno;
 import main.java.com.tf.teamflowcode.GestioneAccount.Control.AccountControl;
-import main.java.com.tf.teamflowcode.GestioneOrariEStipendi.Interface.Turno;
 
 public class GestioneTurniControl {
 

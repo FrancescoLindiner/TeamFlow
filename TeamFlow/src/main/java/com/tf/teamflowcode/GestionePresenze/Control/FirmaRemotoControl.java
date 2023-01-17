@@ -99,11 +99,6 @@ public class FirmaRemotoControl {
         String oraDiOggi = ora.format(ora2);
         int oraInteger = Integer.parseInt(oraDiOggi);
 
-        DateFormat minuti = new SimpleDateFormat("mm");
-        Date minutiDate = new Date();
-        String minutiDiOggi = minuti.format(minutiDate);
-        int minutiInteger = Integer.parseInt(minutiDiOggi);
-
         boolean isModificato = false;
 
         try {

@@ -9,7 +9,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import main.java.com.tf.teamflowcode.Entity.Dipendente;
 import main.java.com.tf.teamflowcode.GestioneAccount.Control.AccountControl;
 import javafx.scene.Node;
 

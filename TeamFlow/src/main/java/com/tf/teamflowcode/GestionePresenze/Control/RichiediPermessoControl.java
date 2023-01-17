@@ -3,7 +3,6 @@ package main.java.com.tf.teamflowcode.GestionePresenze.Control;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -226,7 +225,6 @@ public class RichiediPermessoControl {
         Connection conn = null;
 
         AccountControl accountControl = new AccountControl();
-        List<String> ore = new ArrayList<>();
 
         try {
             Class.forName(DRIVER).getConstructor().newInstance();

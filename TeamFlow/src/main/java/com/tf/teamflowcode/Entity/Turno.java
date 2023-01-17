@@ -1,4 +1,4 @@
-package main.java.com.tf.teamflowcode.GestioneOrariEStipendi.Interface;
+package main.java.com.tf.teamflowcode.Entity;
 
 
 public class Turno {
