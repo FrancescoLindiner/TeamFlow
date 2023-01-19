@@ -36,13 +36,16 @@ public class AggiungiImpiegato {
     @FXML
     void buttonConferma(ActionEvent event) throws IOException {
         AggiungiControl aggiungiControl = new AggiungiControl();
-
-        aggiungiControl.aggiungiImpiegato(textFiledNome.getText(), textFieldCognome.getText(), textFieldGrado.getText(), textFieldEmail.getText(), event);
+        if (!textFiledNome.getText().equals("") && !textFieldCognome.getText().equals("")
+                && !textFieldEmail.getText().equals("") && !textFieldGrado.getText().equals("")) {
+            aggiungiControl.aggiungiImpiegato(textFiledNome.getText(), textFieldCognome.getText(),
+                    textFieldGrado.getText(), textFieldEmail.getText(), event);
+        }
     }
 
     @FXML
     void buttonVaiIndietro(ActionEvent event) throws IOException {
-        
+
         Parent parent = FXMLLoader.load(getClass()
                 .getResource(
                         "../../../../../../resources/com/tf/teamflowcode/GestioneImpiegati/fxml/GestioneImpiegati.fxml"));

@@ -155,7 +155,7 @@ public class ControlSezioneNotifiche {
             System.out.println("Deleting record into the table...");
 
             stmt = conn.createStatement();
-            stmt.executeUpdate(sql);                    
+            stmt.executeUpdate(sql);
 
         } catch (InstantiationException e) {
             e.printStackTrace();

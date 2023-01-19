@@ -10,10 +10,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import main.java.com.tf.teamflowcode.GestioneAccount.Control.AccountControl;
 import main.java.com.tf.teamflowcode.GestioneOrariEStipendi.Control.GeneraOrarioControl;
@@ -110,6 +115,17 @@ public class ModuloLogin {
 
     @FXML
     void recuperaPassword(ActionEvent event) throws IOException {
+        /*Alert alert = new Alert(AlertType.ERROR, "ERRORE COMUNICAZIONE CON IL DBMS", ButtonType.OK);
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.setStyle("-fx-font-size: 16px;" + "-fx-font-weight: bold;");
+        dialogPane.getStyleClass().remove("alert");
+        GridPane grid = (GridPane) dialogPane.lookup("*.header-panel");
+        grid.setStyle("-fx-font-weight: bold;" + "-fx-font-size: 20px;");
+        alert.showAndWait();
+        if (alert.getResult() == ButtonType.YES) {
+            alert.close();
+        }*/
+
         parent = FXMLLoader.load(getClass()
                 .getResource(
                         "../../../../../../resources/com/tf/teamflowcode/GestioneAccount/fxml/RecuperaPassword.fxml"));

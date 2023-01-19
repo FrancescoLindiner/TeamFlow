@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import main.java.com.tf.teamflowcode.GestioneAccount.Control.AccountControl;
 import main.java.com.tf.teamflowcode.GestionePresenze.Control.RichiediPermessoControl;
+import main.java.com.tf.teamflowcode.GestionePresenze.Control.RimpiazzaImpiegato;
 import javafx.scene.Node;
 
 public class ModuloRichiediPermesso {
@@ -61,35 +62,52 @@ public class ModuloRichiediPermesso {
     void buttonConferma(ActionEvent event) throws IOException {
         RichiediPermessoControl richiediPermessoControl = new RichiediPermessoControl();
         LocalDate localDate = datePicker.getValue();
+        AccountControl accountControl = new AccountControl();
         try {
             if (oraPicker.getText().equals("") && !textArea.getText().equals("")) {
                 if (richiediPermessoControl.controllaTurno(localDate.toString())
                         && richiediPermessoControl.controlla24HTurno(localDate.toString())) {
-                    if (richiediPermessoControl.inserisciPermessoGiornoIntero(localDate.toString(),
-                            textArea.getText())) {
-                        AccountControl accountControl = new AccountControl();
-                        if (accountControl.returnRuolo().equals("Amministratore")) {
-                            parent = FXMLLoader.load(getClass()
-                                    .getResource(
-                                            "../../../../../../resources/com/tf/teamflowcode/Pannelli/fxml/PannelloConfermaPermessoAmministratore.fxml"));
-                            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                            scene = new Scene(parent, 810, 500);
-                            stage.setScene(scene);
-                            stage.setResizable(false);
-                            stage.show();
-                        } else {
-                            parent = FXMLLoader.load(getClass()
-                                    .getResource(
-                                            "../../../../../../resources/com/tf/teamflowcode/Pannelli/fxml/PannelloConfermaPermessoImpiegato.fxml"));
-                            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                            scene = new Scene(parent, 810, 500);
-                            stage.setScene(scene);
-                            stage.setResizable(false);
-                            stage.show();
+                    if (accountControl.returnRuolo().equals("Amministratore")) {
+
+
+                        RimpiazzaImpiegato rimpiazzaImpiegato = new RimpiazzaImpiegato();
+                        //rimpiazzaImpiegato.rimpiazzaImpiegatoGiornoIntero(localDate.toString());
+
+                        parent = FXMLLoader.load(getClass()
+                                .getResource(
+                                        "../../../../../../resources/com/tf/teamflowcode/Pannelli/fxml/PannelloConfermaPermessoAmministratore.fxml"));
+                        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        scene = new Scene(parent, 810, 500);
+                        stage.setScene(scene);
+                        stage.setResizable(false);
+                        stage.show();
+                        return;
+                    } else {
+                        if (richiediPermessoControl.inserisciPermessoGiornoIntero(localDate.toString(),
+                                textArea.getText())) {
+                            if (accountControl.returnRuolo().equals("Amministratore")) {
+                                parent = FXMLLoader.load(getClass()
+                                        .getResource(
+                                                "../../../../../../resources/com/tf/teamflowcode/Pannelli/fxml/PannelloConfermaPermessoAmministratore.fxml"));
+                                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                                scene = new Scene(parent, 810, 500);
+                                stage.setScene(scene);
+                                stage.setResizable(false);
+                                stage.show();
+                            } else {
+                                parent = FXMLLoader.load(getClass()
+                                        .getResource(
+                                                "../../../../../../resources/com/tf/teamflowcode/Pannelli/fxml/PannelloConfermaPermessoImpiegato.fxml"));
+                                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                                scene = new Scene(parent, 810, 500);
+                                stage.setScene(scene);
+                                stage.setResizable(false);
+                                stage.show();
+                            }
                         }
                     }
+
                 } else {
-                    AccountControl accountControl = new AccountControl();
                     if (accountControl.returnRuolo().equals("Amministratore")) {
                         parent = FXMLLoader.load(getClass()
                                 .getResource(
@@ -116,32 +134,57 @@ public class ModuloRichiediPermesso {
                                 oraPicker.getText().substring(0, 5))
                         &&
                         richiediPermessoControl.controllaOrari(localDate.toString(), oraPicker.getText())) {
-                    if (richiediPermessoControl.inserisciPermessoOre(localDate.toString(),
-                            oraPicker.getText().substring(0, 5),
-                            oraPicker.getText().substring(6, 11), textArea.getText())) {
-                        AccountControl accountControl = new AccountControl();
-                        if (accountControl.returnRuolo().equals("Amministratore")) {
-                            parent = FXMLLoader.load(getClass()
-                                    .getResource(
-                                            "../../../../../../resources/com/tf/teamflowcode/Pannelli/fxml/PannelloConfermaPermessoAmministratore.fxml"));
-                            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                            scene = new Scene(parent, 810, 500);
-                            stage.setScene(scene);
-                            stage.setResizable(false);
-                            stage.show();
+                    if (accountControl.returnRuolo().equals("Amministratore")) {
+                        String nomeECognome = accountControl.returnNome() + " " + accountControl.returnCognome();
+                        RimpiazzaImpiegato rimpiazzaImpiegato = new RimpiazzaImpiegato();
+                        boolean isNotte = rimpiazzaImpiegato.controllaNotte(localDate.toString(), Integer.parseInt(accountControl.returnMatricola()));
+                        if (isNotte) {
+                            rimpiazzaImpiegato.rimpiazzaImpiegatoNotte(localDate.toString(), Integer.parseInt(accountControl.returnMatricola()), nomeECognome);
+
+                        } else if (oraPicker.getText().equals("22:00-05:00")) {
+                            rimpiazzaImpiegato.rimpiazzaImpiegatoNotte(localDate.toString(), Integer.parseInt(accountControl.returnMatricola()), nomeECognome);
+                        } else if (oraPicker.getText().equals("") || oraPicker.getText().equals(null)) {
+                            rimpiazzaImpiegato.rimpiazzaImpiegatoGiornoIntero(localDate.toString(), accountControl.returnMatricola(), nomeECognome);
                         } else {
-                            parent = FXMLLoader.load(getClass()
-                                    .getResource(
-                                            "../../../../../../resources/com/tf/teamflowcode/Pannelli/fxml/PannelloConfermaPermessoImpiegato.fxml"));
-                            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                            scene = new Scene(parent, 810, 500);
-                            stage.setScene(scene);
-                            stage.setResizable(false);
-                            stage.show();
+                            String oraInizio = oraPicker.getText().substring(0, 5);
+                            String oraFine = oraPicker.getText().substring(6, 11);
+                            rimpiazzaImpiegato.rimpiazzaImpiegatoOre(localDate.toString(), oraInizio, oraFine, accountControl.returnMatricola(), nomeECognome);
+                        }
+
+                        parent = FXMLLoader.load(getClass()
+                                .getResource(
+                                        "../../../../../../resources/com/tf/teamflowcode/Pannelli/fxml/PannelloConfermaPermessoAmministratore.fxml"));
+                        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        scene = new Scene(parent, 810, 500);
+                        stage.setScene(scene);
+                        stage.setResizable(false);
+                        stage.show();
+                    } else {
+                        if (richiediPermessoControl.inserisciPermessoOre(localDate.toString(),
+                                oraPicker.getText().substring(0, 5),
+                                oraPicker.getText().substring(6, 11), textArea.getText())) {
+                            if (accountControl.returnRuolo().equals("Amministratore")) {
+                                parent = FXMLLoader.load(getClass()
+                                        .getResource(
+                                                "../../../../../../resources/com/tf/teamflowcode/Pannelli/fxml/PannelloConfermaPermessoAmministratore.fxml"));
+                                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                                scene = new Scene(parent, 810, 500);
+                                stage.setScene(scene);
+                                stage.setResizable(false);
+                                stage.show();
+                            } else {
+                                parent = FXMLLoader.load(getClass()
+                                        .getResource(
+                                                "../../../../../../resources/com/tf/teamflowcode/Pannelli/fxml/PannelloConfermaPermessoImpiegato.fxml"));
+                                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                                scene = new Scene(parent, 810, 500);
+                                stage.setScene(scene);
+                                stage.setResizable(false);
+                                stage.show();
+                            }
                         }
                     }
                 } else {
-                    AccountControl accountControl = new AccountControl();
                     if (accountControl.returnRuolo().equals("Amministratore")) {
                         parent = FXMLLoader.load(getClass()
                                 .getResource(
@@ -163,7 +206,6 @@ public class ModuloRichiediPermesso {
                     }
                 }
             } else {
-                AccountControl accountControl = new AccountControl();
                 if (accountControl.returnRuolo().equals("Amministratore")) {
                     parent = FXMLLoader.load(getClass()
                             .getResource(
@@ -184,25 +226,30 @@ public class ModuloRichiediPermesso {
                     stage.show();
                 }
             }
-        } catch (StringIndexOutOfBoundsException e) {
-            parent = FXMLLoader.load(getClass()
-                    .getResource(
-                            "../../../../../../resources/com/tf/teamflowcode/Pannelli/fxml/PannelloErrorePermessoImpiegato.fxml"));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(parent, 810, 500);
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.show();
-        } catch (NullPointerException e) {
-            parent = FXMLLoader.load(getClass()
-                    .getResource(
-                            "../../../../../../resources/com/tf/teamflowcode/Pannelli/fxml/PannelloErrorePermessoImpiegato.fxml"));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(parent, 810, 500);
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.show();
-        }
+        }catch(
 
+    StringIndexOutOfBoundsException e)
+    {
+        parent = FXMLLoader.load(getClass()
+                .getResource(
+                        "../../../../../../resources/com/tf/teamflowcode/Pannelli/fxml/PannelloErrorePermessoImpiegato.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(parent, 810, 500);
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }catch(
+    NullPointerException e)
+    {
+        parent = FXMLLoader.load(getClass()
+                .getResource(
+                        "../../../../../../resources/com/tf/teamflowcode/Pannelli/fxml/PannelloErrorePermessoImpiegato.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(parent, 810, 500);
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
     }
+
+}
 }

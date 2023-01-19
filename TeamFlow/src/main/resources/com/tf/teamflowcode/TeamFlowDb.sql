@@ -52,10 +52,15 @@ select * from turno;
 select * from stipendio;
 select * from permesso;
 
+select * from turno where t_matricola=7 and data='2023-01-28'
+
 INSERT INTO dipendente (matricola, nome, cognome, email, password, tipologia) VALUES
   (1, 'Mario', 'Rossi', 'mario.rossi@gmail.com','MRss1','impiegato A'),
   (2, 'Anna', 'Bianchi', 'anna.bianchi@gmail.com','ANnb2', 'impiegato B'),
   (3, 'Giorgio', 'Verdi', 'giorgio.verdi@gmail.com','GIve3', 'Amministratore');
+
+INSERT INTO stipendio (anno_s, mese_s, s_matricola, ore_straordinario, importo) VALUES
+    ( '2023', '03', (SELECT matricola from dipendente WHERE nome='Mario' AND cognome='Rossi'), 0, 0 );
 
 INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine) VALUES
   ('2022-01-01', 'mattina', 1, '08:00:00', '16:00:00'),

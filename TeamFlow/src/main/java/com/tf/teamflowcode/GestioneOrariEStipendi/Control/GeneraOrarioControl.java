@@ -49,14 +49,16 @@ public class GeneraOrarioControl {
                     } else if (counter % 7 == 3) {
                         caricaITurni1(dipendente.getMatricola(), getData(counter), ora_inizioMattina, ora_fineMattina,
                                 ora_inizioPome, ora_finePome);
-                        counter += 2;
+                        counter++;
+                        caricaGiornoLibero(dipendente.getMatricola(), getData(counter));
+                        counter++;
                     } else {
                         caricaITurni1(dipendente.getMatricola(), getData(counter), ora_inizioMattina, ora_fineMattina,
                                 ora_inizioPome, ora_finePome);
                         counter++;
                     }
                 }
-            } else if(numeroRandom() == 2) {
+            } else if (numeroRandom() == 2) {
                 int counter = 0;
                 while (counter < counterGiorni) {
                     if (counter % 7 == 3) {
@@ -65,7 +67,9 @@ public class GeneraOrarioControl {
                     } else if (counter % 7 == 5) {
                         caricaITurni2(dipendente.getMatricola(), getData(counter), ora_inizio2Mattina, ora_fine2Mattina,
                                 ora_inizio2Pome, ora_fine2Pome);
-                        counter += 2;
+                        counter++;
+                        caricaGiornoLibero(dipendente.getMatricola(), getData(counter));
+                        counter++;
                     } else {
                         caricaITurni2(dipendente.getMatricola(), getData(counter), ora_inizio2Mattina, ora_fine2Mattina,
                                 ora_inizio2Pome, ora_fine2Pome);
@@ -81,13 +85,67 @@ public class GeneraOrarioControl {
                     } else if (counter % 7 == 2) {
                         caricaITurni3(dipendente.getMatricola(), getData(counter), ora_inizio3Mattina, ora_fine3Mattina,
                                 ora_inizio3Pome, ora_fine3Pome);
-                        counter += 2;
+                        counter++;
+                        caricaGiornoLibero(dipendente.getMatricola(), getData(counter));
+                        counter++;
                     } else {
                         caricaITurni3(dipendente.getMatricola(), getData(counter), ora_inizio3Mattina, ora_fine3Mattina,
                                 ora_inizio3Pome, ora_fine3Pome);
                         counter++;
                     }
                 }
+            }
+        }
+    }
+
+    private void caricaGiornoLibero(String matricola, String data) {
+        Statement stmt = null;
+        Connection conn = null;
+
+        try {
+            Class.forName(DRIVER).getConstructor().newInstance();
+
+            System.out.println("Connecting to selected database...");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Progetto?", "root", "root");
+
+            String sql = "INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine, presenza, firma_ingresso, firma_uscita) VALUES ('"
+                    + data
+                    + "', 'libero', '" + matricola + "', '-', '-', " + false
+                    + ", " + false + ", " + false + ");";
+
+            System.out.println("Inserting record into the table...");
+
+            stmt = conn.createStatement();
+            stmt.executeUpdate(sql);
+
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
         }
     }
@@ -104,8 +162,10 @@ public class GeneraOrarioControl {
             System.out.println("Connecting to selected database...");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Progetto?", "root", "root");
 
-            String sql = "INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine, presenza, firma_ingresso, firma_uscita) VALUES ('" + data
-                    + "', 'notte', '" + matricola + "', '" + oraNotteInizio2 + "', '" + oraNotteFine2 + "', " + false + ", " + false + ", " + false + ");";
+            String sql = "INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine, presenza, firma_ingresso, firma_uscita) VALUES ('"
+                    + data
+                    + "', 'notte', '" + matricola + "', '" + oraNotteInizio2 + "', '" + oraNotteFine2 + "', " + false
+                    + ", " + false + ", " + false + ");";
 
             System.out.println("Inserting record into the table...");
 
@@ -155,11 +215,16 @@ public class GeneraOrarioControl {
             System.out.println("Connecting to selected database...");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Progetto?", "root", "root");
 
-            String sql = "INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine, presenza, firma_ingresso, firma_uscita) VALUES ('" + data
-                    + "', 'mattina', '" + matricola + "', '" + ora_inizioMattina2 + "', '" + ora_fineMattina2 + "', " + false + ", " + false + ", " + false + ");";;
+            String sql = "INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine, presenza, firma_ingresso, firma_uscita) VALUES ('"
+                    + data
+                    + "', 'mattina', '" + matricola + "', '" + ora_inizioMattina2 + "', '" + ora_fineMattina2 + "', "
+                    + false + ", " + false + ", " + false + ");";
+            ;
 
-            String sql2 = "INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine, presenza, firma_ingresso, firma_uscita) VALUES ('" + data
-                    + "', 'pomeriggio', '" + matricola + "', '" + ora_inizioPome2 + "', '" + ora_finePome2 + "', " + false + ", " + false + ", " + false + ");";
+            String sql2 = "INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine, presenza, firma_ingresso, firma_uscita) VALUES ('"
+                    + data
+                    + "', 'pomeriggio', '" + matricola + "', '" + ora_inizioPome2 + "', '" + ora_finePome2 + "', "
+                    + false + ", " + false + ", " + false + ");";
 
             System.out.println("Inserting record into the table...");
 
@@ -210,11 +275,15 @@ public class GeneraOrarioControl {
             System.out.println("Connecting to selected database...");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Progetto?", "root", "root");
 
-            String sql = "INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine, presenza, firma_ingresso, firma_uscita) VALUES ('" + data
-                    + "', 'mattina', '" + matricola + "', '" + ora_inizioMattina2 + "', '" + ora_fineMattina2 + "', " + false + ", " + false + ", " + false + ");";
+            String sql = "INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine, presenza, firma_ingresso, firma_uscita) VALUES ('"
+                    + data
+                    + "', 'mattina', '" + matricola + "', '" + ora_inizioMattina2 + "', '" + ora_fineMattina2 + "', "
+                    + false + ", " + false + ", " + false + ");";
 
-            String sql2 = "INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine, presenza, firma_ingresso, firma_uscita) VALUES ('" + data
-                    + "', 'pomeriggio', '" + matricola + "', '" + ora_inizioPome2 + "', '" + ora_finePome2 + "', " + false + ", " + false + ", " + false + ");";
+            String sql2 = "INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine, presenza, firma_ingresso, firma_uscita) VALUES ('"
+                    + data
+                    + "', 'pomeriggio', '" + matricola + "', '" + ora_inizioPome2 + "', '" + ora_finePome2 + "', "
+                    + false + ", " + false + ", " + false + ");";
 
             System.out.println("Inserting record into the table...");
 
@@ -265,11 +334,15 @@ public class GeneraOrarioControl {
             System.out.println("Connecting to selected database...");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Progetto?", "root", "root");
 
-            String sql = "INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine, presenza, firma_ingresso, firma_uscita) VALUES ('" + data
-                    + "', 'mattina', '" + matricola + "', '" + ora_inizioMattina2 + "', '" + ora_fineMattina2 + "', " + false + ", " + false + ", " + false + ");";
+            String sql = "INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine, presenza, firma_ingresso, firma_uscita) VALUES ('"
+                    + data
+                    + "', 'mattina', '" + matricola + "', '" + ora_inizioMattina2 + "', '" + ora_fineMattina2 + "', "
+                    + false + ", " + false + ", " + false + ");";
 
-            String sql2 = "INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine, presenza, firma_ingresso, firma_uscita) VALUES ('" + data
-                    + "', 'pomeriggio', '" + matricola + "', '" + ora_inizioPome2 + "', '" + ora_finePome2 + "', " + false + ", " + false + ", " + false + ");";
+            String sql2 = "INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine, presenza, firma_ingresso, firma_uscita) VALUES ('"
+                    + data
+                    + "', 'pomeriggio', '" + matricola + "', '" + ora_inizioPome2 + "', '" + ora_finePome2 + "', "
+                    + false + ", " + false + ", " + false + ");";
 
             System.out.println("Inserting record into the table...");
 
@@ -322,12 +395,10 @@ public class GeneraOrarioControl {
         return s;
     }
 
-
     public int numeroRandom() {
         Random rand = new Random();
         return rand.nextInt(3) + 1;
     }
-
 
     public List<Dipendente> prendiImpiegati() {
         final String DRIVER = "com.mysql.cj.jdbc.Driver";
@@ -404,7 +475,7 @@ public class GeneraOrarioControl {
 
         Statement stmt = null;
         Connection conn = null;
-        
+
         try {
             Class.forName(DRIVER).getConstructor().newInstance();
 

@@ -28,7 +28,7 @@
             <DropShadow />
          </effect>
       </Button>
-      <Label layoutX="305.0" layoutY="262.0" text="Le password non corrispondono">
+      <Label fx:id="label" layoutX="305.0" layoutY="262.0" text="Le password non corrispondono">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>

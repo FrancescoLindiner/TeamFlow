@@ -39,7 +39,6 @@ public class FirmaRemotoControl {
             System.out.println("Checking record into the table...");
 
             stmt = conn.createStatement();
-            stmt.executeQuery(sql);
 
             ResultSet rs = stmt.executeQuery(sql);
 

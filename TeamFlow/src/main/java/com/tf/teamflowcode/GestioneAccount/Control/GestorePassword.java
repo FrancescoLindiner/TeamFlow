@@ -52,7 +52,6 @@ public class GestorePassword {
                     return false;
                 }
             } else {
-                System.out.println("Password giuste");
                 return true;
             }
         } else {

@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.security.SecureRandom;
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -16,7 +19,8 @@ public class AggiungiControl {
 
     final String DRIVER = "com.mysql.cj.jdbc.Driver";
 
-    public void aggiungiImpiegato(String nome, String cognome, String grado, String email, ActionEvent event) throws IOException {
+    public void aggiungiImpiegato(String nome, String cognome, String grado, String email, ActionEvent event)
+            throws IOException {
         Statement stmt = null;
         Connection conn = null;
 
@@ -29,10 +33,24 @@ public class AggiungiControl {
             String sql = "INSERT INTO dipendente (nome, cognome, email, password, tipologia) VALUES ('" + nome + "', '"
                     + cognome + "', '" + email + "', '" + generatePassword() + "', '" + grado + "');";
 
+            DateFormat anno = new SimpleDateFormat("yyyy");
+            Date anno2 = new Date();
+            String dataDiOggiAnno = anno.format(anno2);
+
+            DateFormat mese = new SimpleDateFormat("MM");
+            Date mese2 = new Date();
+            String dataDiOggimese = mese.format(mese2);
+
+            String sql2 = "INSERT INTO stipendio (anno_s, mese_s, s_matricola, ore_straordinario, importo) VALUES( '"
+                    + dataDiOggiAnno + "', '" + dataDiOggimese
+                    + "', (SELECT matricola from dipendente WHERE nome='" + nome + "' AND cognome='" + cognome
+                    + "'), 0, 0 );";
+
             System.out.println("Inserting record into the table...");
 
             stmt = conn.createStatement();
             stmt.executeUpdate(sql);
+            stmt.executeUpdate(sql2);
 
             Parent parent = FXMLLoader.load(getClass()
                     .getResource(

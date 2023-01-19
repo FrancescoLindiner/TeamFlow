@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import main.java.com.tf.teamflowcode.Entity.Permesso;
+import main.java.com.tf.teamflowcode.GestionePresenze.Control.RimpiazzaImpiegato;
 import main.java.com.tf.teamflowcode.Pannelli.Control.ControlSezioneNotifiche;
 import javafx.scene.Node;
 
@@ -34,7 +35,31 @@ public class SezioneNotifiche implements Initializable {
     @FXML
     void buttonAccetta(ActionEvent event) throws IOException {
         permessoSelezionato = listView.getSelectionModel().getSelectedItems();
-        // viene invocato il caso d'uso rimpiazza impiegato
+
+        RimpiazzaImpiegato rimpiazzaImpiegato = new RimpiazzaImpiegato();
+        // rimpiazzaImpiegato.rimpiazzaAmministratore(permessoSelezionato.get(0).getData_p());
+
+        boolean isNotte = rimpiazzaImpiegato.controllaNotte(permessoSelezionato.get(0).getData_p(),
+                permessoSelezionato.get(0).getP_matricola());
+
+        if (isNotte) {
+
+            rimpiazzaImpiegato.rimpiazzaImpiegatoNotte(permessoSelezionato.get(0).getData_p(),
+                    permessoSelezionato.get(0).getP_matricola(), permessoSelezionato.get(0).getNomeECognome());
+
+        } else if (permessoSelezionato.get(0).getOra_fine_turno().equals("-")) {
+
+            rimpiazzaImpiegato.rimpiazzaImpiegatoGiornoIntero(permessoSelezionato.get(0).getData_p(),
+                    Integer.toString(permessoSelezionato.get(0).getP_matricola()),
+                    permessoSelezionato.get(0).getNomeECognome());
+
+        } else {
+            rimpiazzaImpiegato.rimpiazzaImpiegatoOre(permessoSelezionato.get(0).getData_p(),
+                    permessoSelezionato.get(0).getOra_inizio_turno(),
+                    permessoSelezionato.get(0).getOra_fine_turno(), Integer.toString(permessoSelezionato.get(0).getP_matricola()),
+                    permessoSelezionato.get(0).getNomeECognome());
+        }
+
         controlSezioneNotifiche.eliminaRichiesta(permessoSelezionato);
         parent = FXMLLoader.load(getClass()
                 .getResource(
