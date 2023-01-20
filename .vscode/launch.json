@@ -9,21 +9,24 @@
             "name": "Launch Main",
             "request": "launch",
             "mainClass": "main.java.com.tf.teamflowcode.Main",
-            "projectName": ""
+            "projectName": "",
+            "vmArgs": "--module-path \"C:/Java/javafx-sdk-19/lib\" --add-modules javafx.controls,javafx.fxml"
         },
         {
             "type": "java",
             "name": "Launch Main",
             "request": "launch",
             "mainClass": "main.java.com.tf.teamflowcode.Main",
-            "projectName": "Progetto_931aac79"
+            "projectName": "Progetto_931aac79",
+            "vmArgs": "--module-path \"C:/Java/javafx-sdk-19/lib\" --add-modules javafx.controls,javafx.fxml"
         },
         {
             "type": "java",
             "name": "Launch Main",
             "request": "launch",
             "mainClass": "Main",
-            "projectName": "TeamFlow_cda45fda"
+            "projectName": "TeamFlow_cda45fda",
+            "vmArgs": "--module-path \"C:/Java/javafx-sdk-19/lib\" --add-modules javafx.controls,javafx.fxml"
         },
         {
             "type": "java",

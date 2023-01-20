@@ -22,14 +22,24 @@ public class FirmaRemotoControl {
         Date date = new Date();
         String dataDiOggi = data.format(date);
 
+        DateFormat ora = new SimpleDateFormat("yyyy-MM-dd");
+        Date ora2 = new Date();
+        String oraDiOggi = ora.format(ora2);
+
         try {
             Class.forName(DRIVER).getConstructor().newInstance();
 
             System.out.println("Connecting to selected database...");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Progetto?", "root", "root");
+
             String oraInizio = prediOraInizio();
             String oraFine = prediOraFine();
-            if (oraInizio==null || oraFine==null) {
+            if (Integer.parseInt(oraInizio.substring(0, 2)) > Integer.parseInt(oraDiOggi.substring(0, 2))
+                    || Integer.parseInt(oraDiOggi.substring(0, 2)) >= Integer.parseInt(oraFine.substring(0, 2))) {
+                return false;
+            }
+
+            if (oraInizio == null || oraFine == null) {
                 return false;
             }
             String sql = "SELECT presenza FROM turno WHERE t_matricola=" + accountControl.returnMatricola()

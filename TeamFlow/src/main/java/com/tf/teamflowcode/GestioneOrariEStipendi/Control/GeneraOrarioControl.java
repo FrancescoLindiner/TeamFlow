@@ -45,7 +45,9 @@ public class GeneraOrarioControl {
                 while (counter < counterGiorni) {
                     if (counter % 7 == 0) {
                         caricaTurnoNotturno(dipendente.getMatricola(), getData(counter), oraNotteInizio, oraNotteFine);
-                        counter += 2;
+                        counter++;
+                        caricaGiornoLibero(dipendente.getMatricola(), getData(counter));
+                        counter++;
                     } else if (counter % 7 == 3) {
                         caricaITurni1(dipendente.getMatricola(), getData(counter), ora_inizioMattina, ora_fineMattina,
                                 ora_inizioPome, ora_finePome);
@@ -63,7 +65,9 @@ public class GeneraOrarioControl {
                 while (counter < counterGiorni) {
                     if (counter % 7 == 3) {
                         caricaTurnoNotturno(dipendente.getMatricola(), getData(counter), oraNotteInizio, oraNotteFine);
-                        counter += 2;
+                        counter++;
+                        caricaGiornoLibero(dipendente.getMatricola(), getData(counter));
+                        counter++;
                     } else if (counter % 7 == 5) {
                         caricaITurni2(dipendente.getMatricola(), getData(counter), ora_inizio2Mattina, ora_fine2Mattina,
                                 ora_inizio2Pome, ora_fine2Pome);
@@ -81,7 +85,9 @@ public class GeneraOrarioControl {
                 while (counter < counterGiorni) {
                     if (counter % 7 == 4) {
                         caricaTurnoNotturno(dipendente.getMatricola(), getData(counter), oraNotteInizio, oraNotteFine);
-                        counter += 2;
+                        counter++;
+                        caricaGiornoLibero(dipendente.getMatricola(), getData(counter));
+                        counter++;
                     } else if (counter % 7 == 2) {
                         caricaITurni3(dipendente.getMatricola(), getData(counter), ora_inizio3Mattina, ora_fine3Mattina,
                                 ora_inizio3Pome, ora_fine3Pome);

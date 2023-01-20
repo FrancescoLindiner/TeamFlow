@@ -19,11 +19,10 @@ public class Main extends Application {
         launch(args);
 
     }
-
     @Override
     public void start(Stage stage) throws IOException {
+
         login = FXMLLoader.load(getClass().getResource("../../../../resources/com/tf/teamflowcode/GestioneAccount/fxml/fxmlLogin.fxml"));
-    
         scene = new Scene(login, 810, 500);
     
         stage.setScene(scene);

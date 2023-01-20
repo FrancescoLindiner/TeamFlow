@@ -1,14 +1,22 @@
 {
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "TeamFlow/lib/javafx.base.jar",
-        "TeamFlow/lib/javafx.controls.jar",
-        "TeamFlow/lib/javafx.fxml.jar",
-        "TeamFlow/lib/javafx.graphics.jar",
-        "TeamFlow/lib/javafx.media.jar",
-        "TeamFlow/lib/javafx.swing.jar",
-        "TeamFlow/lib/javafx.web.jar",
-        "TeamFlow/lib/javafx-swt.jar",
-        "TeamFlow/mysql-connector-java-8.0.26.jar"
-    ]
+    "java.project.referencedLibraries": {
+        "include": [
+            "lib/**/*.jar",
+            "c:\\Java\\javafx-sdk-19\\lib\\javafx.base.jar",
+            "c:\\Java\\javafx-sdk-19\\lib\\javafx.controls.jar",
+            "c:\\Java\\javafx-sdk-19\\lib\\javafx.fxml.jar",
+            "c:\\Java\\javafx-sdk-19\\lib\\javafx.graphics.jar",
+            "c:\\Java\\javafx-sdk-19\\lib\\javafx.media.jar",
+            "c:\\Java\\javafx-sdk-19\\lib\\javafx.swing.jar",
+            "c:\\Java\\javafx-sdk-19\\lib\\javafx.web.jar",
+            "c:\\Java\\javafx-sdk-19\\lib\\javafx-swt.jar",
+            "TeamFlow/mysql-connector-java-8.0.26.jar"
+        ],
+        "exclude": [
+            "TeamFlow/lib/javafx-swt.jar",
+            "TeamFlow/lib/javafx.graphics.jar",
+            "TeamFlow/lib/javafx.web.jar",
+            "TeamFlow/lib/javafx.fxml.jar"
+        ]
+    }
 }

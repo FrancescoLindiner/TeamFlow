@@ -53,6 +53,6 @@ public class Dipendente {
 
     @Override
     public String toString(){
-        return getNome() + " " + getCognome() + ", " + getMatricola() + ", " + getEmail() + ", " + getTipologia();
+        return getNome() + " " + getCognome() + ", " + getMatricola() + ",\n" + getEmail() + ", " + getTipologia();
     }
 }

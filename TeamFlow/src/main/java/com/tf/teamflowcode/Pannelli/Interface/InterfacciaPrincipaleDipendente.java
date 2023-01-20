@@ -2,11 +2,13 @@ package main.java.com.tf.teamflowcode.Pannelli.Interface;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -20,6 +22,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import main.java.com.tf.teamflowcode.GestioneAccount.Control.AccountControl;
 import main.java.com.tf.teamflowcode.GestioneOrariEStipendi.Control.ControlStipendi;
+import main.java.com.tf.teamflowcode.Pannelli.Control.InterfacciaPrincipaleControl;
 import javafx.scene.Node;
 
 public class InterfacciaPrincipaleDipendente implements Initializable {
@@ -38,9 +41,16 @@ public class InterfacciaPrincipaleDipendente implements Initializable {
     private Label label2;
 
     @FXML
+    private Label label3;
+
+    @FXML
+    private Label label4;
+
+    @FXML
     private Label nomeUtente;
 
     AccountControl accountControl = new AccountControl();
+    InterfacciaPrincipaleControl interfacciaPrincipaleControl = new InterfacciaPrincipaleControl();
 
     public void setData() {
         AccountControl accountControl = new AccountControl();
@@ -57,8 +67,29 @@ public class InterfacciaPrincipaleDipendente implements Initializable {
     }
 
     public void setNomeUtente() {
-
         nomeUtente.setText(accountControl.returnNome() + " " + accountControl.returnCognome());
+    }
+
+    public void setOrario() throws SQLException {
+        List<String> orari = interfacciaPrincipaleControl.getOrari();
+        if (orari != null && orari.size()==2 && orari.get(0).equals("00:00:00")) {
+            label3.setText("oggi hai il giorno libero");
+            label4.setText(" ");
+        } else if (orari != null && orari.size()==2 && orari.get(0).equals("22:00:00")) {
+            label3.setText("oggi il tuo turno cominicia alle");
+            label4.setText("22:00 e termina alle 05:00");
+        } else if (orari != null && orari.size()==4) {
+            String oraInizioMattina = orari.get(0);
+            String oraFineMattina = orari.get(1);
+            String oraInizioPomeriggio = orari.get(2);
+            String oraFinePomeriggio = orari.get(3);
+            label3.setText("oggi i tuoi turni sono ai seguenti orari:");
+            label4.setText(oraInizioMattina.substring(0, 5) + "-" + oraFineMattina.substring(0, 5) + " e "
+                    + oraInizioPomeriggio.substring(0, 5) + "-" + oraFinePomeriggio.substring(0, 5));
+        } else {
+            label3.setText("oggi non hai turni di lavoro");
+            label4.setText(" ");
+        }
     }
 
     @FXML
@@ -140,6 +171,12 @@ public class InterfacciaPrincipaleDipendente implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         setData();
         setNomeUtente();
+        try {
+            setOrario();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     @FXML

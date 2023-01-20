@@ -12,6 +12,216 @@ public class RimpiazzaImpiegato {
 
     final String DRIVER = "com.mysql.cj.jdbc.Driver";
 
+    public void rimpiazzaAmministratoreGiornoIntero(String data, String matricola, String nomeECognome) {
+        Dipendente dipendente;
+
+        String giorno = data.substring(8, 10);
+        int giornoInt = Integer.parseInt(giorno);
+        int giornoPrecedente = giornoInt - 1;
+        String stringGiornoPrecedente = Integer.toString(giornoPrecedente);
+        String dataPrecedente = data.replace(giorno, stringGiornoPrecedente);
+
+        if (dataPrecedente.equals("2023-01-01")) {
+            dataPrecedente = "2022-12-31";
+        } else if (dataPrecedente.equals("2023-02-01")) {
+            dataPrecedente = "2023-01-31";
+        } else if (dataPrecedente.equals("2023-03-01")) {
+            dataPrecedente = "2023-02-27";
+        } else if (dataPrecedente.equals("2023-04-01")) {
+            dataPrecedente = "2023-03-31";
+        } else if (dataPrecedente.equals("2023-05-01")) {
+            dataPrecedente = "2023-04-30";
+        } else if (dataPrecedente.equals("2023-06-01")) {
+            dataPrecedente = "2023-05-31";
+        } else if (dataPrecedente.equals("2023-07-01")) {
+            dataPrecedente = "2023-06-30";
+        } else if (dataPrecedente.equals("2023-08-01")) {
+            dataPrecedente = "2023-07-31";
+        } else if (dataPrecedente.equals("2023-09-01")) {
+            dataPrecedente = "2023-08-31";
+        } else if (dataPrecedente.equals("2023-10-01")) {
+            dataPrecedente = "2023-09-30";
+        } else if (dataPrecedente.equals("2023-11-01")) {
+            dataPrecedente = "2023-10-31";
+        } else if (dataPrecedente.equals("2023-12-01")) {
+            dataPrecedente = "2023-11-30";
+        }
+        String matricolaImpiegato = "";
+        String ora_inizio_turno_mattina = prendiOraInizio(matricola, "mattina");
+        String ora_fine_turno_mattina = prendiOraFine(matricola, "mattina");
+        String ora_inizio_turno_pomeriggio = prendiOraInizio(matricola, "pomeriggio");
+        String ora_fine_turno_pomeriggio = prendiOraFine(matricola, "pomeriggio");
+        try {
+            do {
+                dipendente = prendiAmministratore(matricola, nomeECognome);
+                matricolaImpiegato = dipendente.getMatricola();
+            } while (!controllaGiornoLibero(data, matricolaImpiegato).equals("libero")
+                    && controllaNotte(dataPrecedente, Integer.parseInt(matricolaImpiegato)));
+        } catch (NullPointerException e) {
+            dipendente = prendiAmministratore(getRuolo(matricola), nomeECognome);
+            System.out.println("Primo amministratore " + dipendente);
+            assegnaStraordinarioMattina(ora_inizio_turno_mattina, ora_fine_turno_mattina, data,
+                    dipendente.getMatricola(), matricola);
+            dipendente = prendiAltroAmministratore(getRuolo(matricola), nomeECognome, dipendente.getNome(),
+                    dipendente.getCognome());
+            System.out.println("Primo amministratore " + dipendente);
+            assegneStraordinarioPomeriggio(ora_inizio_turno_pomeriggio, ora_fine_turno_pomeriggio, data,
+                    dipendente.getMatricola());
+            return;
+        }
+
+        if (ora_inizio_turno_mattina.equals(null)) {
+            System.out.println("GIORNO LIBERO");
+            return;
+        }
+
+        aggiornaOrari(dipendente.getMatricola(), data, ora_inizio_turno_mattina, ora_fine_turno_mattina,
+                ora_inizio_turno_pomeriggio, ora_fine_turno_pomeriggio);
+
+        String giornoLibero = prendiGiornoLibero(matricola, data);
+
+        ora_inizio_turno_mattina = prendiOraInizio(dipendente.getMatricola(), "mattina");
+        ora_fine_turno_mattina = prendiOraFine(dipendente.getMatricola(), "mattina");
+        ora_inizio_turno_pomeriggio = prendiOraInizio(dipendente.getMatricola(), "pomeriggio");
+        ora_fine_turno_pomeriggio = prendiOraFine(dipendente.getMatricola(), "pomeriggio");
+
+        aggiornaOrari2(matricola, giornoLibero, ora_inizio_turno_mattina,
+                ora_fine_turno_mattina,
+                ora_inizio_turno_pomeriggio, ora_fine_turno_pomeriggio);
+    }
+
+    private Dipendente prendiAltroAmministratore(String ruolo, String nomeECognome, String nome, String cognome) {
+        Statement stmt = null;
+        Connection conn = null;
+
+        String[] nomeECognomeArray = nomeECognome.split(" ");
+        String nomeImpiegato = nomeECognomeArray[0];
+        String cognomeImpiegato = nomeECognomeArray[1];
+
+        try {
+            Class.forName(DRIVER).getConstructor().newInstance();
+
+            System.out.println("Connecting to selected database...");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Progetto?", "root", "root");
+
+            String sql = "SELECT matricola, nome, cognome, email, tipologia FROM dipendente WHERE tipologia='Amministratore' AND nome!='"
+                    + nomeImpiegato + "' AND cognome!='" + cognomeImpiegato
+                    + "' AND nome!='" + nome + "' AND cognome!='" + cognome + "' ORDER BY RAND() LIMIT 1;";
+
+            System.out.println("Selecting record into the table...");
+
+            stmt = conn.createStatement();
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+            if (rs.next()) {
+                String matricola = rs.getString("matricola");
+                String nome2 = rs.getString("nome");
+                String cognome2 = rs.getString("cognome");
+                String email = rs.getString("email");
+                String tipologia = rs.getString("tipologia");
+                return new Dipendente(matricola, nome2, cognome2, email, tipologia);
+            }
+
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+    private Dipendente prendiAmministratore(String matricola, String nomeECognome) {
+        Statement stmt = null;
+        Connection conn = null;
+
+        String[] nomeECognomeArray = nomeECognome.split(" ");
+        String nomeImpiegato = nomeECognomeArray[0];
+        String cognomeImpiegato = nomeECognomeArray[1];
+
+        try {
+            Class.forName(DRIVER).getConstructor().newInstance();
+
+            System.out.println("Connecting to selected database...");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Progetto?", "root", "root");
+
+            String sql = "SELECT matricola, nome, cognome, email, tipologia FROM dipendente WHERE tipologia='Amministratore' AND nome!='"
+                    + nomeImpiegato + "' AND cognome!='" + cognomeImpiegato
+                    + "' ORDER BY RAND() LIMIT 1;";
+
+            System.out.println("Selecting record into the table...");
+
+            stmt = conn.createStatement();
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+            if (rs.next()) {
+                String matricolaAmministratore = rs.getString("matricola");
+                String nome = rs.getString("nome");
+                String cognome = rs.getString("cognome");
+                String email = rs.getString("email");
+                String tipologia = rs.getString("tipologia");
+                return new Dipendente(matricolaAmministratore, nome, cognome, email, tipologia);
+            }
+
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
     public void rimpiazzaImpiegatoGiornoIntero(String data, String matricola, String nomeECognome) {
         Dipendente dipendente;
 
@@ -57,12 +267,15 @@ public class RimpiazzaImpiegato {
                 matricolaImpiegato = dipendente.getMatricola();
             } while (!controllaGiornoLibero(data, matricolaImpiegato).equals("libero")
                     && controllaNotte(dataPrecedente, Integer.parseInt(matricolaImpiegato)));
+            System.out.println(dipendente);
         } catch (NullPointerException e) {
             dipendente = prendiImpiegato(getRuolo(matricola), nomeECognome);
+            System.out.println("Primo impiegato scelto per lo straordinario: " + dipendente);
             assegnaStraordinarioMattina(ora_inizio_turno_mattina, ora_fine_turno_mattina, data,
                     dipendente.getMatricola(), matricola);
             dipendente = prendiAltroImpiegato(getRuolo(matricola), nomeECognome, dipendente.getNome(),
                     dipendente.getCognome());
+            System.out.println("Secondo impiegato scelto per lo straordinario: " + dipendente);
             assegneStraordinarioPomeriggio(ora_inizio_turno_pomeriggio, ora_fine_turno_pomeriggio, data,
                     dipendente.getMatricola());
             return;
@@ -169,7 +382,7 @@ public class RimpiazzaImpiegato {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Progetto?", "root", "root");
 
             String sql1 = "INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine, presenza, firma_ingresso, firma_uscita) VALUES ('"
-                    + data + "', 'mattina', '" + matricola + "', '" + ora_inizio_turno_pomeriggio
+                    + data + "', 'pomeriggio', '" + matricola + "', '" + ora_inizio_turno_pomeriggio
                     + "', '"
                     + ora_fine_turno_pomeriggio + "', " + false + ", " + false + ", " + false + ");";
 
@@ -180,10 +393,16 @@ public class RimpiazzaImpiegato {
             DateFormat mese = new SimpleDateFormat("MM");
             Date mese2 = new Date();
             String dataDiOggimese = mese.format(mese2);
-
+            int meseInteger = Integer.parseInt(dataDiOggimese);
+            int meseGiusto = 0;
+            if (meseInteger == 1) {
+                meseGiusto = 1;
+            } else {
+                meseGiusto = meseInteger - 1;
+            }
             String sql2 = "UPDATE stipendio SET ore_straordinario = ore_straordinario + " + ore_straordinario
                     + " where s_matricola='" + matricola + "' AND anno_s='" + dataDiOggiAnno + "' AND mese_s='"
-                    + dataDiOggimese + "';";
+                    + meseGiusto + "';";
 
             System.out.println("Updating record into the table...");
 
@@ -250,13 +469,19 @@ public class RimpiazzaImpiegato {
             DateFormat mese = new SimpleDateFormat("MM");
             Date mese2 = new Date();
             String dataDiOggimese = mese.format(mese2);
-
+            int meseInteger = Integer.parseInt(dataDiOggimese);
+            int meseGiusto = 0;
+            if (meseInteger == 1) {
+                meseGiusto = 1;
+            } else {
+                meseGiusto = meseInteger - 1;
+            }
             String sql2 = "UPDATE stipendio SET ore_straordinario = ore_straordinario + " + ore_straordinario
                     + " where s_matricola='" + matricola + "' AND anno_s='" + dataDiOggiAnno + "' AND mese_s='"
-                    + dataDiOggimese + "';";
+                    + meseGiusto + "';";
 
             String sql3 = "DELETE FROM turno WHERE t_matricola='" + matricolaImpiegatoPermesso + "' AND data='"
-                    + data + "';";
+                    + data + "' AND ora_inizio='" + ora_inizio_turno_mattina + "';";
 
             System.out.println("Updating record into the table...");
 
@@ -487,6 +712,8 @@ public class RimpiazzaImpiegato {
             String nomeECognome) {
         Dipendente dipendente = prendiImpiegato(getRuolo(matricola), nomeECognome);
 
+        System.out.println(dipendente);
+
         int ora_inizio = Integer.parseInt(oraInizio.substring(0, 2));
         int ora_fine = Integer.parseInt(oraFine.substring(0, 2));
 
@@ -568,6 +795,7 @@ public class RimpiazzaImpiegato {
         while (matricolaString.equals(dipendenteSelezionato.getMatricola())) {
             dipendenteSelezionato = prendiImpiegato(ruolo, nomeECognome);
         }
+        System.out.println(dipendenteSelezionato);
         // prendere le ore "normali" di questo impiegato
         String ora_inizio_turno_mattina = prendiOraInizio(dipendenteSelezionato.getMatricola(), "mattina");
         String ora_fine_turno_mattina = prendiOraFine(dipendenteSelezionato.getMatricola(), "mattina");
@@ -575,14 +803,14 @@ public class RimpiazzaImpiegato {
         String ora_fine_turno_pomeriggio = prendiOraFine(dipendenteSelezionato.getMatricola(), "pomeriggio");
 
         if (ora_inizio_turno_mattina.equals(null)) {
-            System.out.println("GIORNO LIBERO");
-            return;
+            dipendenteSelezionato = prendiImpiegato(ruolo, nomeECognome);
         }
 
         aggiornaTurnoNotteImpiegatoSelezionato(dipendenteSelezionato.getMatricola(), data_p); // mette la notte e il
                                                                                               // giorno successivo ed
                                                                                               // elimina i turni vecchi
         String dataNotte = prendiGiornoNotte(dipendenteSelezionato.getMatricola(), data_p);
+        System.out.println(dataNotte);
         assegnaTurniNuovi(ora_inizio_turno_mattina, ora_fine_turno_mattina, ora_inizio_turno_pomeriggio,
                 ora_fine_turno_pomeriggio, dataNotte, dipendenteSelezionato.getMatricola()); // mette i nuovi turni
                                                                                              // eliminando il turno di
@@ -781,16 +1009,16 @@ public class RimpiazzaImpiegato {
             System.out.println("Connecting to selected database...");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Progetto?", "root", "root");
 
-            if (controllaGiornoLibero(data_p, matricola).equals("libero")) {
-                String sql1 = "INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine, presenza, firma_ingresso, firma_uscita) VALUES ('"
-                        + data_p + "', 'notte', '" + matricola + "', '22:00:00', '05:00:00', " + false + ", " + false
-                        + ", " + false + ");";
-                stmt = conn.createStatement();
-                stmt.executeUpdate(sql1);
-            } else {
+            if (controllaGiornoLibero(data_p, matricola) == null) {
                 String sql1 = "UPDATE turno SET ora_inizio='22:00:00', ora_fine='05:00:00', descrizione='notte' WHERE t_matricola='"
                         + matricola
                         + "' AND data='" + data_p + "';";
+                stmt = conn.createStatement();
+                stmt.executeUpdate(sql1);
+            } else if (controllaGiornoLibero(data_p, matricola).equals("libero")) {
+                String sql1 = "INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine, presenza, firma_ingresso, firma_uscita) VALUES ('"
+                        + data_p + "', 'notte', '" + matricola + "', '22:00:00', '05:00:00', " + false + ", " + false
+                        + ", " + false + ");";
                 stmt = conn.createStatement();
                 stmt.executeUpdate(sql1);
             }
@@ -1106,4 +1334,58 @@ public class RimpiazzaImpiegato {
         return null;
     }
 
+    public void rimpiazzaAmministratoreNotte(String data, int matricola, String nomeECognome) {
+        String matricolaString = Integer.toString(matricola);
+
+        Dipendente dipendenteSelezionato = prendiAmministratore(Integer.toString(matricola), nomeECognome);
+        while (matricolaString.equals(dipendenteSelezionato.getMatricola())) {
+            dipendenteSelezionato = prendiAmministratore(Integer.toString(matricola), nomeECognome);
+        }
+        System.out.println(dipendenteSelezionato);
+        // prendere le ore "normali" di questo impiegato
+        String ora_inizio_turno_mattina = prendiOraInizio(dipendenteSelezionato.getMatricola(), "mattina");
+        String ora_fine_turno_mattina = prendiOraFine(dipendenteSelezionato.getMatricola(), "mattina");
+        String ora_inizio_turno_pomeriggio = prendiOraInizio(dipendenteSelezionato.getMatricola(), "pomeriggio");
+        String ora_fine_turno_pomeriggio = prendiOraFine(dipendenteSelezionato.getMatricola(), "pomeriggio");
+
+        if (ora_inizio_turno_mattina.equals(null)) {
+            dipendenteSelezionato = prendiAmministratore(Integer.toString(matricola), nomeECognome);
+        }
+
+        aggiornaTurnoNotteImpiegatoSelezionato(dipendenteSelezionato.getMatricola(), data); // mette la notte e il
+                                                                                            // giorno successivo ed
+                                                                                            // elimina i turni vecchi
+        String dataNotte = prendiGiornoNotte(dipendenteSelezionato.getMatricola(), data);
+        System.out.println(dataNotte);
+        assegnaTurniNuovi(ora_inizio_turno_mattina, ora_fine_turno_mattina, ora_inizio_turno_pomeriggio,
+                ora_fine_turno_pomeriggio, dataNotte, dipendenteSelezionato.getMatricola()); // mette i nuovi turni
+                                                                                             // eliminando il turno di
+        // notte vecchio
+
+        ora_inizio_turno_mattina = prendiOraInizio(matricolaString, "mattina");
+        ora_fine_turno_mattina = prendiOraFine(matricolaString, "mattina");
+        ora_inizio_turno_pomeriggio = prendiOraInizio(matricolaString, "pomeriggio");
+        ora_fine_turno_pomeriggio = prendiOraFine(matricolaString, "pomeriggio");
+        assegnaTurniNuovi(ora_inizio_turno_mattina, ora_fine_turno_mattina, ora_inizio_turno_pomeriggio,
+                ora_fine_turno_pomeriggio, data, matricolaString); // mette i turni nuovi ed
+                                                                   // elimina il turno di notte
+        aggiornaTurnoNotteImpiegatoSelezionato(matricolaString, dataNotte); // mette la notte al vecchio impiegato
+    }
+
+    public void rimpiazzaAmministratoreOre(String data, String oraInizio, String oraFine, String returnMatricola,
+            String nomeECognome) {
+        Dipendente dipendente = prendiAmministratore(returnMatricola, nomeECognome);
+
+        System.out.println(dipendente);
+
+        int ora_inizio = Integer.parseInt(oraInizio.substring(0, 2));
+        int ora_fine = Integer.parseInt(oraFine.substring(0, 2));
+
+        if (ora_inizio >= 5 && ora_fine <= 15) {
+            assegnaStraordinarioMattina(oraInizio, oraFine, data,
+                    dipendente.getMatricola(), returnMatricola);
+        } else {
+            assegneStraordinarioPomeriggio(oraInizio, nomeECognome, data, returnMatricola);
+        }
+    }
 }

@@ -61,8 +61,8 @@
             </ImageView>
             <Label id="label1" fx:id="label1" layoutX="84.0" layoutY="155.0" stylesheets="@../css/styleInterfacciaPrincipale.css" text="Turno [data]" />
             <Label id="label2" fx:id="label2" layoutX="84.0" layoutY="195.0" stylesheets="@../css/styleInterfacciaPrincipale.css" text="Ciao [Nome Utente]," />
-            <Label layoutX="83.0" layoutY="213.0" text="oggi il tuo turno comincia alle [orario]" />
-            <Label layoutX="81.0" layoutY="230.0" text="e termina alle [orario]" />
+            <Label fx:id="label3" layoutX="83.0" layoutY="213.0" text="oggi il tuo turno comincia alle [orario]" />
+            <Label fx:id="label4" layoutX="81.0" layoutY="230.0" text="e termina alle [orario]" />
             <ImageView fitHeight="99.0" fitWidth="102.0" layoutX="380.0" layoutY="164.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/clock.png" />
