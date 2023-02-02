@@ -3,6 +3,7 @@ package main.java.com.tf.teamflowcode.Pannelli.Interface;
 import java.io.IOException;
 import java.net.URL;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 
@@ -118,8 +119,10 @@ public class InterfacciaPrincipaleDipendente implements Initializable {
         }
     }
 
+
     @FXML
-    void buttonTurni(ActionEvent event) throws IOException {
+    void buttonTurni(ActionEvent event) throws IOException, ParseException {
+
         parent = FXMLLoader.load(getClass()
                 .getResource(
                         "../../../../../../resources/com/tf/teamflowcode/GestioneOrariEStipendi/fxml/Turni.fxml"));
@@ -250,7 +253,7 @@ public class InterfacciaPrincipaleDipendente implements Initializable {
             stage.setTitle("Assenza Malattia");
             stage.show();
         }
-        
+
     }
 
     @FXML

@@ -35,11 +35,11 @@
             <Font name="System Bold" size="30.0" />
          </font>
       </Label>
-      <TableView id="table" fx:id="tableView" layoutX="305.0" layoutY="192.0" prefHeight="200.0" prefWidth="378.0">
+      <TableView id="table" fx:id="tableView" layoutX="277.0" layoutY="180.0" prefHeight="227.0" prefWidth="430.0">
         <columns>
-          <TableColumn id="tableRow" fx:id="DATA" prefWidth="125.0" text="DATA" />
-          <TableColumn fx:id="ORAINIZIO" prefWidth="125.0" text="ORA INIZIO" />
-            <TableColumn fx:id="ORAFINE" prefWidth="125.0" text="ORA FINE" />
+          <TableColumn id="tableRow" fx:id="DATA" prefWidth="143.3" text="DATA" />
+          <TableColumn fx:id="ORAINIZIO" prefWidth="143.3" text="ORA INIZIO" />
+            <TableColumn fx:id="ORAFINE" prefWidth="143.3" text="ORA FINE" />
         </columns>
       </TableView>
       <ImageView fitHeight="92.0" fitWidth="98.0" layoutX="-15.0" layoutY="-19.0" pickOnBounds="true" preserveRatio="true">

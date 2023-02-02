@@ -2,6 +2,8 @@ package main.java.com.tf.teamflowcode.GestioneAccount.Interface;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +16,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import main.java.com.tf.teamflowcode.GestioneAccount.Control.AccountControl;
+import main.java.com.tf.teamflowcode.GestioneOrariEStipendi.Control.GeneraOrarioControl;
 import javafx.scene.Node;
 
 public class ModuloLogin {
@@ -48,9 +51,10 @@ public class ModuloLogin {
 
     @FXML
     void login(ActionEvent event) throws IOException, InterruptedException {
+
         AccountControl accountControl = new AccountControl();
         boolean isCorrect = accountControl.controllaDatiLogin(textFiled.getText(), password.getText());
-        if (!isCorrect || textFiled.getText()=="" || password.getText()=="") {
+        if (!isCorrect || textFiled.getText() == "" || password.getText() == "") {
             parent = FXMLLoader.load(getClass()
                     .getResource(
                             "../../../../../../resources/com/tf/teamflowcode/Pannelli/fxml/SplashScreenErrore.fxml"));
@@ -59,7 +63,7 @@ public class ModuloLogin {
             stage.setScene(scene);
             stage.setResizable(false);
             stage.show();
-        }else{
+        } else {
             parent = FXMLLoader.load(getClass()
                     .getResource(
                             "../../../../../../resources/com/tf/teamflowcode/Pannelli/fxml/splahScreenConfirm.fxml"));
@@ -68,6 +72,25 @@ public class ModuloLogin {
             stage.setScene(scene);
             stage.setResizable(false);
             stage.show();
+        }
+        SimpleDateFormat f = new SimpleDateFormat("MM-dd HH:mm");
+
+        if (f.format(new Date()).equals("01-28 00:00")) {
+            GeneraOrarioControl generaOrarioControl = new GeneraOrarioControl();
+            generaOrarioControl.eliminaOrari();
+            generaOrarioControl.generaOrari(91);
+        } else if (f.format(new Date()).equals("04-28 00:00")) {
+            GeneraOrarioControl generaOrarioControl = new GeneraOrarioControl();
+            generaOrarioControl.eliminaOrari();
+            generaOrarioControl.generaOrari(91);
+        } else if (f.format(new Date()).equals("07-28 00:00")) {
+            GeneraOrarioControl generaOrarioControl = new GeneraOrarioControl();
+            generaOrarioControl.eliminaOrari();
+            generaOrarioControl.generaOrari(92);
+        } else if (f.format(new Date()).equals("10-28 00:00")) {
+            GeneraOrarioControl generaOrarioControl = new GeneraOrarioControl();
+            generaOrarioControl.eliminaOrari();
+            generaOrarioControl.generaOrari(92);
         }
 
     }

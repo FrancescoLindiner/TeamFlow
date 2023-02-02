@@ -24,7 +24,7 @@
             <DropShadow />
          </effect>
       </ImageView>
-      <TextArea id="textArea" layoutX="319.0" layoutY="201.0" prefHeight="165.0" prefWidth="347.0" promptText="Motivazione" />
+      <TextArea id="textArea" fx:id="textArea" layoutX="319.0" layoutY="201.0" prefHeight="165.0" prefWidth="347.0" promptText="Motivazione" />
       <ImageView fitHeight="56.0" fitWidth="73.0" layoutX="220.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/IconaFirmaRemoto.png" />
@@ -35,7 +35,7 @@
             <Font name="System Bold" size="30.0" />
          </font>
       </Label>
-      <Button id="buttonConferma" layoutX="447.0" layoutY="385.0" mnemonicParsing="false" text="Conferma">
+      <Button id="buttonConferma" layoutX="447.0" layoutY="385.0" mnemonicParsing="false" onAction="#buttonConferma" text="Conferma">
          <effect>
             <DropShadow />
          </effect>

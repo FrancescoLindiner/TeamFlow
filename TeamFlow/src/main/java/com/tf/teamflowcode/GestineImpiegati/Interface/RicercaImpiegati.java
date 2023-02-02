@@ -13,7 +13,6 @@ import javafx.fxml.Initializable;
 import javafx.stage.Stage;
 import main.java.com.tf.teamflowcode.Entity.Dipendente;
 import main.java.com.tf.teamflowcode.GestineImpiegati.Control.GestioneImpiegati;
-import main.java.com.tf.teamflowcode.Pannelli.Interface.PannelloConfermaRimuovi;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;

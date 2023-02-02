@@ -13,15 +13,17 @@ CREATE TABLE dipendente (
 );
 
 CREATE TABLE turno (
+  id_turno INT auto_increment,
   data DATE,
   descrizione VARCHAR(255),
   t_matricola INT,
   ora_inizio TIME,
   ora_fine TIME,
-  PRIMARY KEY (data, t_matricola),
+  PRIMARY KEY (id_turno, t_matricola),
   FOREIGN KEY (t_matricola) REFERENCES dipendente(matricola) on delete cascade
 );
 
+drop table turno;
 CREATE TABLE stipendio (
   anno_s int,
   mese_s int,
@@ -32,18 +34,27 @@ CREATE TABLE stipendio (
   FOREIGN KEY (s_matricola) REFERENCES dipendente(matricola) on delete cascade
 );
 
+CREATE TABLE permesso (
+  id_turno INT auto_increment,
+  p_matricola INT,
+  data_p DATE,
+  ora_inizio_turno VARCHAR(255),
+  ora_fine_turno VARCHAR(255),
+  motivazione VARCHAR(255),
+  PRIMARY KEY (id_turno, p_matricola, data_p),
+  FOREIGN KEY (p_matricola) REFERENCES dipendente(matricola) on delete cascade
+);
+
 select * from dipendente;
 select * from turno;
 select * from stipendio;
-
-drop table dipendente
-drop table turno
-drop table stipendio
+select * from permesso;
 
 INSERT INTO dipendente (matricola, nome, cognome, email, password, tipologia) VALUES
   (1, 'Mario', 'Rossi', 'mario.rossi@gmail.com','MRss1','impiegato A'),
   (2, 'Anna', 'Bianchi', 'anna.bianchi@gmail.com','ANnb2', 'impiegato B'),
   (3, 'Giorgio', 'Verdi', 'giorgio.verdi@gmail.com','GIve3', 'Amministratore');
+INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine) VALUES   ('2022-01-05', 'mattina', 3, '10:00:00', '13:00:00')
 
 INSERT INTO turno (data, descrizione, t_matricola, ora_inizio, ora_fine) VALUES
   ('2022-01-01', 'mattina', 1, '08:00:00', '16:00:00'),
